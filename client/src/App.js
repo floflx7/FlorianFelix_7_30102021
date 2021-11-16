@@ -11,8 +11,8 @@ function App() {
         <Link to="/createpost"> Create A Post</Link>
         <Link to="/"> Home Page</Link>
         <Routes>
-          <Route path="/" exact component={Home} />
-          <Route path="/createpost" exact component={CreatePost} />
+          <Route path="/" element={<Home />} />
+          <Route path="/createpost" element={<CreatePost />} />
         </Routes>
       </Router>
     </div>

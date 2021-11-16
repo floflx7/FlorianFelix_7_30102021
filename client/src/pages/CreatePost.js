@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
@@ -16,7 +17,9 @@ function CreatePost() {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    axios.post("http://localhost:3001/posts", data).then((response) => {
+      console.log("IT WORKED");
+    });
   };
   return (
     <div className="createPostPage">
@@ -30,7 +33,7 @@ function CreatePost() {
           <ErrorMessage name="title" component="span" />
           <Field
             autocomplete="off"
-            id="inpuCreatePost"
+            id="inputCreatePost"
             name="title"
             placeholder="(Ex. Title...)"
           />
@@ -38,18 +41,17 @@ function CreatePost() {
           <ErrorMessage name="postText" component="span" />
           <Field
             autocomplete="off"
-            id="inpuCreatePost"
-            name="title"
+            id="inputCreatePost"
+            name="postText"
             placeholder="(Ex. Post...)"
           />
-
           <label>Username: </label>
           <ErrorMessage name="username" component="span" />
           <Field
             autocomplete="off"
-            id="inpuCreatePost"
-            name="title"
-            placeholder="(Ex. Username...)"
+            id="inputCreatePost"
+            name="username"
+            placeholder="(Ex. John123...)"
           />
 
           <button type="submit"> Create Post</button>
