@@ -7,6 +7,8 @@ router.get("/", async (req, res) => {
   res.json(listOfPosts);
 });
 
+router.get("/byId");
+
 router.post("/", async (req, res) => {
   const post = req.body;
   await Posts.create(post);
