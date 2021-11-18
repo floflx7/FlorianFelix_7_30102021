@@ -6,7 +6,7 @@ function Post() {
   let { id } = useParams();
   const [postObject, setPostObject] = useState({});
   const [comments, setComments] = useState([]);
-  const [newComment, setnewComment] = useState("");
+  const [newComment, setNewComment] = useState("");
 
   useEffect(() => {
     axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
@@ -20,23 +20,36 @@ function Post() {
 
   const addComment = () => {
     axios
-      .post("http://localhost:3001/comments", {
-        commentBody: newComment,
-        PostId: id,
-      })
+      .post(
+        "http://localhost:3001/comments",
+        {
+          commentBody: newComment,
+          PostId: id,
+        },
+        {
+          headers: {
+            accessToken: sessionStorage.getItem("accessToken"),
+          },
+        }
+      )
       .then((response) => {
-        const commentToAdd = { commentBody: newComment };
-        setComments([...comments, commentToAdd]);
-        setnewComment("");
+        if (response.data.error) {
+          console.log(response.data.error);
+        } else {
+          const commentToAdd = { commentBody: newComment };
+          setComments([...comments, commentToAdd]);
+          setNewComment("");
+        }
       });
   };
+
   return (
     <div className="postPage">
       <div className="leftSide">
         <div className="post" id="individual">
-          <div className="title"> {postObject.title}</div>
-          <div className="body"> {postObject.postText}</div>
-          <div className="footer"> {postObject.username}</div>
+          <div className="title"> {postObject.title} </div>
+          <div className="body">{postObject.postText}</div>
+          <div className="footer">{postObject.username}</div>
         </div>
       </div>
       <div className="rightSide">
@@ -47,7 +60,7 @@ function Post() {
             autoComplete="off"
             value={newComment}
             onChange={(event) => {
-              setnewComment(event.target.value);
+              setNewComment(event.target.value);
             }}
           />
           <button onClick={addComment}> Add Comment</button>
