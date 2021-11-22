@@ -25,6 +25,8 @@ router.delete("/:commentId", validateToken, async (req, res) => {
       id: commentId,
     },
   });
+  
+  res.json("DELETED SUCCESSFULLY")
 });
 
 module.exports = router;
