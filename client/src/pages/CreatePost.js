@@ -3,11 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../helpers/AuthContext";
 
 function CreatePost() {
-  const { authState } = useContext(AuthContext);
-
   let navigate = useNavigate();
   const initialValues = {
     title: "",
@@ -45,7 +42,7 @@ function CreatePost() {
           <label>Title: </label>
           <ErrorMessage name="title" component="span" />
           <Field
-            autocomplete="off"
+            autoComplete="off"
             id="inputCreatePost"
             name="title"
             placeholder="(Ex. Title...)"
@@ -53,7 +50,7 @@ function CreatePost() {
           <label>Post: </label>
           <ErrorMessage name="postText" component="span" />
           <Field
-            autocomplete="off"
+            autoComplete="off"
             id="inputCreatePost"
             name="postText"
             placeholder="(Ex. Post...)"
