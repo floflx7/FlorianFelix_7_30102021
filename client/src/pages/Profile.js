@@ -22,6 +22,7 @@ function Profile() {
     <div className="profilePageContainer">
       <div className="basicInfo">
         <h1> Username: {username} </h1>
+        <button> Change My Password</button>
       </div>
       <div className="listOfPosts">
         {listOfPosts.map((value, key) => {
