@@ -43,6 +43,13 @@ body {
   place-content: center;
 }
 
+.post .body .PostImage {
+  width: 200px;
+  flex: 20%;
+  display: grid;
+  place-content: center;
+}
+
 .post .footer {
   flex: 20%;
   border-top: 1px solid lightgray;

@@ -12,6 +12,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+
+    image: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   });
 
   Posts.associate = (models) => {

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -6,9 +6,12 @@ import { useNavigate } from "react-router-dom";
 
 function CreatePost() {
   let navigate = useNavigate();
+  const [imageSelected, setImageSelected] = useState();
+
   const initialValues = {
     title: "",
     postText: "",
+    image: "",
   };
 
   useEffect(() => {
@@ -22,12 +25,25 @@ function CreatePost() {
   });
 
   const onSubmit = (data) => {
+    const formData = new FormData();
+    formData.append("file", imageSelected);
+    formData.append("upload_preset", "titzz75s");
+
     axios
-      .post("http://localhost:3001/posts", data, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
+      .post("https://api.cloudinary.com/v1_1/dfhqbiyir/image/upload", formData)
       .then((response) => {
-        navigate("/");
+        console.log(response.data.public_id);
+        const fileName = response.data.public_id;
+
+        axios
+          .post("http://localhost:3001/posts", data, fileName, {
+            headers: { accessToken: localStorage.getItem("accessToken") },
+          })
+          .then((response) => {
+            console.log(response);
+            console.log(fileName);
+            navigate("/");
+          });
       });
   };
 
@@ -54,6 +70,16 @@ function CreatePost() {
             id="inputCreatePost"
             name="postText"
             placeholder="(Ex. Post...)"
+          />
+          <label>File: </label>
+          <ErrorMessage name="postText" component="span" />
+          <Field
+            type="file"
+            id="inputCreatePost"
+            name="image"
+            onChange={(event) => {
+              setImageSelected(event.target.files[0]);
+            }}
           />
 
           <button type="submit"> Create Post</button>
