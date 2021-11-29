@@ -56,19 +56,21 @@ function App() {
             <div className="links">
               {!authState.status ? (
                 <>
-                  <Link to="/login"> Login</Link>
-                  <Link to="/registration"> Registration</Link>
+                  <Link to="/login"> Se connecter </Link>
+                  <Link to="/registration"> Créer un compte</Link>
                 </>
               ) : (
                 <>
-                  <Link to="/"> Home Page</Link>
-                  <Link to="/createpost"> Create a post</Link>
+                  <Link to="/"> Accueil</Link>
+                  <Link to="/createpost"> Créer un post</Link>
                 </>
               )}
             </div>
             <div className="loggedInContainer">
               <h1>{authState.username} </h1>
-              {authState.status && <button onClick={logout}> Logout</button>}
+              {authState.status && (
+                <button onClick={logout}> Déconnexion</button>
+              )}
             </div>
           </div>
           <Routes>

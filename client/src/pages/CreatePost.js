@@ -11,7 +11,6 @@ function CreatePost() {
   const initialValues = {
     title: "",
     postText: "",
-    image: "",
   };
 
   useEffect(() => {
@@ -20,8 +19,8 @@ function CreatePost() {
     }
   }, []);
   const validationSchema = Yup.object().shape({
-    title: Yup.string().required("You must input a Title!"),
-    postText: Yup.string().required(),
+    title: Yup.string().required("You must input a Title"),
+    postText: Yup.string().required("You must input a Text"),
   });
 
   const onSubmit = (data) => {
@@ -42,6 +41,7 @@ function CreatePost() {
           .then((response) => {
             console.log(response);
             console.log(fileName);
+            console.log(data);
             navigate("/");
           });
       });

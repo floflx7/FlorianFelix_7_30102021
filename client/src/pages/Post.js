@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../helpers/AuthContext";
+import { Image } from "cloudinary-react";
 
 function Post() {
   let { id } = useParams();
@@ -15,6 +16,7 @@ function Post() {
   useEffect(() => {
     axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
       setPostObject(response.data);
+      console.log(response.data);
     });
 
     axios.get(`http://localhost:3001/comments/${id}`).then((response) => {
@@ -127,6 +129,11 @@ function Post() {
             }}
           >
             {postObject.postText}
+            <Image
+              className="PostImage"
+              cloudName="dfhqbiyir"
+              publicId={postObject.image}
+            />
           </div>
           <div className="footer">
             {postObject.username}

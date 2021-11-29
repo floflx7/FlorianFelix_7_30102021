@@ -83,7 +83,7 @@ function Home() {
               <Image
                 className="PostImage"
                 cloudName="dfhqbiyir"
-                publicId={value.Image}
+                publicId={value.image}
               />
             </div>
             <div className="footer">
