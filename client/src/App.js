@@ -11,7 +11,8 @@ import ChangePassword from "./pages/ChangePassword";
 import { AuthContext } from "./helpers/AuthContext";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import logo from "./images/icon-left-font-monochrome-white.png";
+import logo_1 from "./images/icon-left-font-monochrome-white.png";
+import logo_2 from "./images/logo_blanc.png";
 
 function App() {
   const [authState, setAuthState] = useState({
@@ -63,7 +64,18 @@ function App() {
               ) : (
                 <>
                   <Link to="/">
-                    <img src={logo} alt="Logo" width="250" />
+                    <img
+                      className="logo_1"
+                      src={logo_1}
+                      alt="Logo"
+                      width="250"
+                    />
+                    <img
+                      className="logo_2"
+                      src={logo_2}
+                      alt="Logo"
+                      width="100"
+                    />
                   </Link>
                   <Link to="/"> Accueil</Link>
 
@@ -96,15 +108,17 @@ function App() {
         </Router>
       </AuthContext.Provider>
 
-      <div className="footer">
-        ©2021 - Orinoco
-        <div class="col text-center">
-          <a href="index.html">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="index.html">
-            <i class="fab fa-instagram"></i>
-          </a>
+      <div className="footer_page">
+        <div className="text_footer_page">
+          ©2021 - Orinoco
+          <div class="col text-center">
+            <a href="index.html">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="index.html">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>

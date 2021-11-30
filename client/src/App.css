@@ -10,10 +10,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
 }
 
 .post {
-  width: 400px;
+  max-width: 400px;
+  min-width: none;
+
   max-height: 500px;
   min-height: 300px;
 
@@ -53,12 +56,14 @@ body {
 }
 
 .post .body .PostImage {
-  max-width: 250px;
+  max-width: 300px;
   min-width: 100px;
   flex: 20%;
   display: grid;
   place-content: center;
   height: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .post .footer {
@@ -162,6 +167,7 @@ span {
   height: 70px;
   background-color: rgb(26, 68, 109);
   display: flex;
+  flex-direction: row;
   align-items: center;
 }
 .navbar .links {
@@ -172,13 +178,18 @@ span {
   padding: 10px;
 }
 
-.navbar .links img {
+.navbar .links .logo_2 {
+  display: none;
+}
+
+.navbar .links .logo_1 {
   transition: ease-out 0.1s all;
   object-fit: cover;
   height: 70px;
+  display: flex;
 }
 
-.navbar .links img:hover {
+.navbar .links .logo_1:hover {
   animation: ease-out 0.2s grow;
   transform: scale(1.02);
 }
@@ -322,12 +333,33 @@ button {
 }
 
 .listOfComments .comment {
-  width: 70%;
+  width: 20%;
   height: auto;
-  padding: 30px;
+  padding: 10px;
   border: 1px solid lightgray;
   border-radius: 5px;
   margin-top: 20px;
+  display: flex;
+}
+
+.listOfComments .comment h3 {
+  margin: 0px;
+}
+
+.listOfComments .comment label {
+  flex: 80%;
+}
+
+.listOfComments .comment button {
+  width: 50px;
+  height: auto;
+  padding: 20px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin-top: 20px;
+  background-color: rgb(26, 68, 109);
+  color: white;
+  flex: 20%;
 }
 
 #individual {
@@ -338,10 +370,6 @@ button {
 #individual .title,
 #individual .footer {
   font-size: 30px;
-}
-
-#individual .body {
-  font-size: 25px;
 }
 
 /* LOGIN */
@@ -371,4 +399,97 @@ button {
 
 .loginContainer input {
   border: 2px solid rgb(26, 68, 109);
+}
+
+.footer_page {
+  position: relative;
+  padding: 20px;
+  background-color: rgb(26, 68, 109);
+  color: white;
+  width: 100%;
+  bottom: 0;
+  margin-top: 50px;
+}
+
+.text_footer_page {
+  place-items: center;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.basicInfo {
+  display: flex;
+  flex-direction: row;
+}
+
+.basicInfo h1 {
+  flex: 50%;
+}
+
+.basicInfo button {
+  background-color: rgb(26, 68, 109);
+  color: white;
+  float: right;
+  flex: 50%;
+  transition: ease-out 0.1s all;
+}
+
+.basicInfo button:hover {
+  animation: ease-in 0.1s grow;
+  transform: scale(1.02);
+}
+
+.basicInfo button:active {
+  box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.185);
+}
+
+@media only screen and (max-width: 600px) {
+  .rightSide {
+    flex: 50%;
+    height: calc(100vh - 70px);
+
+    flex-direction: column;
+  }
+}
+
+.postPage {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.leftSide {
+  flex: 100%;
+  height: calc(100vh - 70px);
+  display: grid;
+  place-items: center;
+}
+
+.navbar {
+  width: 100%;
+  height: 70px;
+  background-color: rgb(26, 68, 109);
+  display: flex;
+
+  align-items: center;
+}
+
+.navbar .links .logo_1 {
+  display: none;
+}
+
+.navbar .links .logo_2 {
+  display: flex;
+  transition: ease-out 0.1s all;
+  object-fit: cover;
+  height: 50px;
+  width: 40px;
+}
+
+.navbar .links .logo_2:hover {
+  animation: ease-out 0.2s grow;
+  transform: scale(1.02);
 }
