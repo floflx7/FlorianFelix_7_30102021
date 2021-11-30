@@ -78,18 +78,15 @@ function Home() {
                 navigate(`/post/${value.id}`);
               }}
             >
-              <div className="text">{value.postText}</div>
-
               <Image
                 className="PostImage"
                 cloudName="dfhqbiyir"
                 publicId={value.image}
               />
+              <div className="text">{value.postText}</div>
             </div>
             <div className="footer">
-              <div className="username">
-                <Link to={`/profile/${value.UserId}`}> {value.username} </Link>
-              </div>
+              <Link to={`/profile/${value.UserId}`}>{value.username} </Link>
               <div className="buttons">
                 <ThumbUpAltIcon
                   onClick={() => {

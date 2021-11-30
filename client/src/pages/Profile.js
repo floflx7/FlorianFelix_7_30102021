@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../helpers/AuthContext";
+import { Image } from "cloudinary-react";
 
 function Profile() {
   let { id } = useParams();
@@ -47,6 +48,11 @@ function Profile() {
                   navigate(`/post/${value.id}`);
                 }}
               >
+                <Image
+                  className="PostImage"
+                  cloudName="dfhqbiyir"
+                  publicId={value.image}
+                />
                 {value.postText}
               </div>
               <div className="footer">
