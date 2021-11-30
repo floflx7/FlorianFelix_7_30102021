@@ -24,7 +24,7 @@ function Profile() {
     <div className="profilePageContainer">
       <div className="basicInfo">
         {" "}
-        <h1> Username: {username} </h1>
+        <h1> {username} </h1>
         {authState.username === username && (
           <button
             onClick={() => {

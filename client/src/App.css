@@ -9,18 +9,20 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: "Roboto", sans-serif;
 }
 
 .post {
   width: 400px;
-  height: 300px;
+  max-height: 500px;
+  min-height: 300px;
+
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   margin-top: 50px;
   border: 1px solid lightgray;
-  font-family: Arial, Helvetica, sans-serif;
-
+  background-color: rgb(219, 219, 219);
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
@@ -31,7 +33,7 @@ body {
 .post .title {
   flex: 20%;
   border-bottom: 1px solid lightgray;
-  background-color: dodgerblue;
+  background-color: rgb(26, 68, 109);
   display: grid;
   place-content: center;
   color: white;
@@ -43,11 +45,20 @@ body {
   place-content: center;
 }
 
+.post .body .text {
+  flex: 60%;
+  display: grid;
+  place-content: center;
+  padding: 20px;
+}
+
 .post .body .PostImage {
-  width: 200px;
+  max-width: 250px;
+  min-width: 100px;
   flex: 20%;
   display: grid;
   place-content: center;
+  height: 80%;
 }
 
 .post .footer {
@@ -56,15 +67,22 @@ body {
   display: flex;
   align-items: center;
   padding-left: 15px;
-  background-color: dodgerblue;
+  background-color: rgb(26, 68, 109);
   color: white;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
 
-.footer .username {
+.footer .username a {
   flex: 50%;
+  text-decoration: none;
+  color: white;
 }
+
+.footer .username a:hover {
+  color: rgb(177, 174, 174);
+}
+
 .footer .buttons {
   flex: 50%;
   display: flex;
@@ -87,7 +105,6 @@ body {
 /* CREATE POST PAGE CSS */
 
 .createPostPage {
-  font-family: Arial, Helvetica, sans-serif;
   width: 100vw;
   height: 70vh;
   display: flex;
@@ -101,7 +118,7 @@ body {
   width: 500px;
   height: auto;
   padding: 20px;
-  border: 5px solid dodgerblue;
+  border: 5px solid rgb(26, 68, 109);
   border-radius: 5px;
 }
 
@@ -119,14 +136,19 @@ body {
   margin-top: 15px;
   height: 40px;
   border: none;
-  background-color: lightskyblue;
+  background-color: rgb(26, 68, 109);
   border-radius: 5px;
   color: white;
+  margin-left: auto;
+  margin-right: auto;
+  transition: ease-out 0.1s all;
 }
 
 .formContainer button:hover {
   cursor: pointer;
-  background-color: dodgerblue;
+  background-color: rgb(26, 68, 109);
+  animation: ease-out 0.2s grow;
+  transform: scale(1.02);
 }
 
 span {
@@ -138,16 +160,27 @@ span {
 .navbar {
   width: 100%;
   height: 70px;
-  background-color: dodgerblue;
+  background-color: rgb(26, 68, 109);
   display: flex;
   align-items: center;
-  font-family: Arial, Helvetica, sans-serif;
 }
 .navbar .links {
   flex: 50%;
   height: 100%;
   display: flex;
   align-items: center;
+  padding: 10px;
+}
+
+.navbar .links img {
+  transition: ease-out 0.1s all;
+  object-fit: cover;
+  height: 70px;
+}
+
+.navbar .links img:hover {
+  animation: ease-out 0.2s grow;
+  transform: scale(1.02);
 }
 
 .navbar .loggedInContainer {
@@ -156,11 +189,44 @@ span {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  padding: 10px;
 }
+
+.navbar .loggedInContainer button {
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  margin-right: 10px;
+  background-color: rgb(26, 68, 109);
+  transition: ease-out 0.2s all;
+  color: white;
+}
+
+.navbar .loggedInContainer button:hover {
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  margin-right: 10px;
+  background-color: white;
+  color: black;
+  animation: ease-out 0.2s grow;
+  transform: scale(1.02);
+}
+
 .navbar a {
   margin-left: 20px;
   text-decoration: none;
   color: white;
+  animation: ease-in 0.2s opacity;
+  transition: ease-out 0.2s all;
+}
+
+.navbar a:hover {
+  text-decoration: none;
+
+  animation: ease-in 0.5s opacity;
+
+  letter-spacing: 2px;
 }
 
 .navbar button {
@@ -176,6 +242,26 @@ span {
   margin-right: 10px;
   color: white;
   font-weight: lighter;
+}
+
+@keyframes opacity {
+  0% {
+    color: rgb(255, 255, 255);
+  }
+
+  100% {
+    color: #d4d4d4;
+  }
+}
+
+@keyframes grow {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.02);
+  }
 }
 
 /* INDIVIDUAL POST */
@@ -219,12 +305,12 @@ button {
 }
 
 .addCommentContainer button {
-  background-color: dodgerblue;
+  background-color: rgb(26, 68, 109);
   color: white;
 }
 
 .addCommentContainer input {
-  border: 2px solid dodgerblue;
+  border: 2px solid rgb(26, 68, 109);
 }
 
 .rightSide .listOfComments {
@@ -279,10 +365,10 @@ button {
 }
 
 .loginContainer button {
-  background-color: dodgerblue;
+  background-color: rgb(26, 68, 109);
   color: white;
 }
 
 .loginContainer input {
-  border: 2px solid dodgerblue;
+  border: 2px solid rgb(26, 68, 109);
 }

@@ -11,6 +11,7 @@ import ChangePassword from "./pages/ChangePassword";
 import { AuthContext } from "./helpers/AuthContext";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import logo from "./images/icon-left-font-monochrome-white.png";
 
 function App() {
   const [authState, setAuthState] = useState({
@@ -61,18 +62,27 @@ function App() {
                 </>
               ) : (
                 <>
+                  <Link to="/">
+                    <img src={logo} alt="Logo" width="250" />
+                  </Link>
                   <Link to="/"> Accueil</Link>
+
                   <Link to="/createpost"> Créer un post</Link>
                 </>
               )}
             </div>
             <div className="loggedInContainer">
-              <h1>{authState.username} </h1>
+              <h1>
+                <Link to={`/profile/${authState.id}`}>
+                  {authState.username}
+                </Link>
+              </h1>
               {authState.status && (
                 <button onClick={logout}> Déconnexion</button>
               )}
             </div>
           </div>
+
           <Routes>
             <Route path="/" exact element={<Home />} />
             <Route path="/createpost" exact element={<CreatePost />} />
@@ -85,6 +95,18 @@ function App() {
           </Routes>
         </Router>
       </AuthContext.Provider>
+
+      <div className="footer">
+        ©2021 - Orinoco
+        <div class="col text-center">
+          <a href="index.html">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="index.html">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
     </div>
   );
 }

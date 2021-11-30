@@ -19,8 +19,8 @@ function CreatePost() {
     }
   }, []);
   const validationSchema = Yup.object().shape({
-    title: Yup.string().required("You must input a Title"),
-    postText: Yup.string().required("You must input a Text"),
+    title: Yup.string().required("You must input a Title!"),
+    postText: Yup.string().required(),
   });
 
   const onSubmit = (data) => {
@@ -41,7 +41,6 @@ function CreatePost() {
           .then((response) => {
             console.log(response);
             console.log(fileName);
-            console.log(data);
             navigate("/");
           });
       });
@@ -72,10 +71,10 @@ function CreatePost() {
             placeholder="(Ex. Post...)"
           />
           <label>File: </label>
-          <ErrorMessage name="postText" component="span" />
+          <ErrorMessage name="file" component="span" />
           <Field
             type="file"
-            id="inputCreatePost"
+            id="inputImage"
             name="image"
             onChange={(event) => {
               setImageSelected(event.target.files[0]);

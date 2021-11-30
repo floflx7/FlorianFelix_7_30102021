@@ -166,8 +166,8 @@ function Post() {
           {comments.map((comment, key) => {
             return (
               <div key={key} className="comment">
-                {comment.commentBody}
-                <label> Username: {comment.username}</label>
+                {comment.username}
+                <label> : {comment.commentBody} </label>
                 {authState.username === comment.username && (
                   <button
                     onClick={() => {
