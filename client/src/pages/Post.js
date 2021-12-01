@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../helpers/AuthContext";
 import { Image } from "cloudinary-react";
+import { Video } from "cloudinary-react";
 
 function Post() {
   let { id } = useParams();
@@ -141,7 +142,12 @@ function Post() {
               <button
                 className="delete"
                 onClick={() => {
-                  deletePost(postObject.id);
+                  let confirm = window.confirm("delete post ?");
+                  if (confirm) {
+                    deletePost(postObject.id);
+                  } else {
+                    console.log("WTF");
+                  }
                 }}
               >
                 Delete Post

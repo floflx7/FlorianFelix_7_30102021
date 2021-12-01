@@ -32,14 +32,10 @@ function Registration() {
         validationSchema={validationSchema}
       >
         <Form className="loginContainer">
+          <h1>Register</h1>
           <label>Username: </label>
           <ErrorMessage name="username" component="span" />
-          <Field
-            autoComplete="off"
-            id="inputCreatePost"
-            name="username"
-            placeholder="(Ex. John123...)"
-          />
+          <Field autoComplete="off" id="inputCreatePost" name="username" />
 
           <label>Password: </label>
           <ErrorMessage name="password" component="span" />
@@ -48,7 +44,6 @@ function Registration() {
             type="password"
             id="inputCreatePost"
             name="password"
-            placeholder="Your Password..."
           />
 
           <button type="submit"> Register</button>

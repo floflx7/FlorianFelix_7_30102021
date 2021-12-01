@@ -23,8 +23,7 @@ function App() {
 
   const logout = () => {
     localStorage.removeItem("accessToken");
-    localStorage.removeItem("username");
-    localStorage.removeItem("userId");
+
     setAuthState(false);
   };
 
@@ -92,7 +91,9 @@ function App() {
                 </Link>
               </h1>
               {authState.status && (
-                <button onClick={logout}> Déconnexion</button>
+                <Link to="/registration">
+                  <button onClick={logout}> Déconnexion</button>
+                </Link>
               )}
             </div>
           </div>
@@ -109,13 +110,6 @@ function App() {
           </Routes>
         </Router>
       </AuthContext.Provider>
-
-      <div className="footer_page">
-        <div className="text_footer_page">
-          ©2021 - Orinoco
-          <div class="col text-center"></div>
-        </div>
-      </div>
     </div>
   );
 }

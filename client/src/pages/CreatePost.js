@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../helpers/AuthContext";
 
 function CreatePost() {
   let navigate = useNavigate();
@@ -11,6 +12,8 @@ function CreatePost() {
   const [title, setTitle] = useState();
   const [postText, setPostText] = useState();
   const [username, setUsername] = useState("");
+  const [userId, setUserId] = useState("");
+  const { authState } = useContext(AuthContext);
   let { id } = useParams();
 
   useEffect(() => {
@@ -36,13 +39,14 @@ function CreatePost() {
             title: title,
             postText: postText,
             image: fileName,
-            username: localStorage.getItem("username"),
-            UserId: localStorage.getItem("userId"),
+            username: authState.username,
+            UserId: authState.id,
           })
 
           .then((response) => {
             console.log(response);
             console.log(fileName);
+            navigate("/");
           });
       });
   };

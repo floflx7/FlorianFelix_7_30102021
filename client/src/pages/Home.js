@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Image } from "cloudinary-react";
+import { Video } from "cloudinary-react";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 
 function Home() {
@@ -83,10 +84,11 @@ function Home() {
                 cloudName="dfhqbiyir"
                 publicId={value.image}
               />
+
               <div className="text">{value.postText}</div>
             </div>
             <div className="footer">
-              <Link to={`/profile/${value.UserId}`}>{value.username} </Link>
+              {value.username}
               <div className="buttons">
                 <ThumbUpAltIcon
                   onClick={() => {
