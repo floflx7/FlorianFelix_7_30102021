@@ -23,6 +23,7 @@ function App() {
 
   const logout = () => {
     localStorage.removeItem("accessToken");
+    localStorage.removeItem("username");
     setAuthState(false);
   };
 
@@ -111,14 +112,7 @@ function App() {
       <div className="footer_page">
         <div className="text_footer_page">
           ©2021 - Orinoco
-          <div class="col text-center">
-            <a href="index.html">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="index.html">
-              <i class="fab fa-instagram"></i>
-            </a>
-          </div>
+          <div class="col text-center"></div>
         </div>
       </div>
     </div>

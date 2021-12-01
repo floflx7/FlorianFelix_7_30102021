@@ -18,6 +18,7 @@ function Login() {
       } else {
         localStorage.setItem("accessToken", response.data.token);
         console.log(response.data.token);
+        localStorage.setItem("username", response.data.username);
         setAuthState({
           username: response.data.username,
           id: response.data.id,
