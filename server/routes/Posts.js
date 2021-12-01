@@ -26,11 +26,8 @@ router.get("/byuserId/:id", async (req, res) => {
 });
 
 router.post("/", validateToken, async (req, res) => {
-  console.log(req.body.title);
-  console.log(req.body.postText);
-  console.log(req.body.image);
-
   const post = req.body;
+  console.log(post);
   post.username = req.user.username;
   post.UserId = req.user.id;
   await Posts.create(post);

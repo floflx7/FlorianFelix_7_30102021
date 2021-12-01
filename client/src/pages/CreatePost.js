@@ -41,7 +41,6 @@ function CreatePost() {
           .then((response) => {
             console.log(response);
             console.log(fileName);
-            navigate("/");
           });
       });
   };

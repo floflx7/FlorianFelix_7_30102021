@@ -11,6 +11,12 @@ function Profile() {
   const [listOfPosts, setListOfPosts] = useState([]);
   const { authState } = useContext(AuthContext);
 
+  const [AuthState, setAuthState] = useState({
+    username: authState.username,
+    id: authState.id,
+    status: true,
+  });
+
   useEffect(() => {
     axios.get(`http://localhost:3001/auth/basicinfo/${id}`).then((response) => {
       setUsername(response.data.username);
@@ -20,6 +26,22 @@ function Profile() {
       setListOfPosts(response.data);
     });
   }, []);
+
+  const deleteUser = (id) => {
+    axios
+      .delete(`http://localhost:3001/auth/delete/${id}`, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
+      .then(() => {
+        navigate("/registration");
+        console.log(authState.status);
+      });
+  };
+
+  const logout = () => {
+    localStorage.removeItem("accessToken");
+    setAuthState(false);
+  };
 
   return (
     <div className="profilePageContainer">
@@ -36,6 +58,18 @@ function Profile() {
             Change My Password
           </button>
         )}
+        <button
+          onClick={() => {
+            deleteUser(authState.id);
+
+            deleteUser(logout);
+
+            navigate("/registration");
+            console.log(authState.id);
+          }}
+        >
+          X
+        </button>
       </div>
       <div className="listOfPosts">
         {listOfPosts.map((value, key) => {

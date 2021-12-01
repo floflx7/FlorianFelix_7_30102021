@@ -48,6 +48,17 @@ router.get("/basicinfo/:id", async (req, res) => {
   res.json(basicInfo);
 });
 
+router.delete("/delete/:id", validateToken, async (req, res) => {
+  const authId = req.params.id;
+  console.log(authId);
+
+  Users.destroy({
+    where: {
+      id: authId,
+    },
+  });
+});
+
 router.put("/changepassword", validateToken, async (req, res) => {
   const { oldPassword, newPassword } = req.body;
   const user = await Users.findOne({ where: { username: req.user.username } });
