@@ -26,13 +26,16 @@
     flex-direction: column;
     margin-top: 50px;
     border: 1px solid lightgray;
-
+    background-color: rgb(73, 70, 70);
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    transition: all 0.2s ease-out;
   }
 
   .post:hover {
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(40, 40, 43, 0.2) 2px 7px 29px 0px;
     cursor: pointer;
+    animation: ease-out 0.2s grow;
+    transform: scale(1.02);
   }
   .post .title {
     flex: 20%;
@@ -41,6 +44,7 @@
     display: grid;
     place-content: center;
     color: white;
+    border-radius: 9px 9px 0px 0px;
   }
 
   .post .body {
@@ -48,6 +52,7 @@
     display: grid;
     place-content: center;
     padding: 10px;
+    color: white;
   }
 
   .post .body .text {
@@ -63,7 +68,7 @@
     flex: 20%;
     display: grid;
     place-content: center;
-    height: fit-content;
+    height: 250px;
     margin-left: auto;
     margin-right: auto;
     padding: 20px;
@@ -142,7 +147,7 @@
     font-size: 20px;
   }
 
-  .formContainer button {
+  button {
     margin-top: 15px;
     height: 40px;
     border: none;
@@ -154,7 +159,7 @@
     transition: ease-out 0.1s all;
   }
 
-  .formContainer button:hover {
+  button:hover {
     cursor: pointer;
     background-color: rgb(26, 68, 109);
     animation: ease-out 0.2s grow;
@@ -521,7 +526,7 @@
     flex: 20%;
     display: grid;
     place-content: center;
-    height: fit-content;
+    height: 200px;
     margin-left: auto;
     margin-right: auto;
     padding: 20px;

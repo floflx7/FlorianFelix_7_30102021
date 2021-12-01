@@ -60,11 +60,7 @@ function Profile() {
         )}
         <button
           onClick={() => {
-            deleteUser(authState.id);
-
-            deleteUser(logout);
-
-            navigate("/registration");
+            navigate("/confirmDeleteUser");
             console.log(authState.id);
           }}
         >

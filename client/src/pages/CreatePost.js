@@ -11,8 +11,6 @@ function CreatePost() {
   const [fileSelected, setFileSelected] = useState();
   const [title, setTitle] = useState();
   const [postText, setPostText] = useState();
-  const [username, setUsername] = useState("");
-  const [userId, setUserId] = useState("");
   const { authState } = useContext(AuthContext);
   let { id } = useParams();
 

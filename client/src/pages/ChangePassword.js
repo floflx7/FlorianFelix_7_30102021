@@ -1,9 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { AuthContext } from "../helpers/AuthContext";
 import axios from "axios";
 
 function ChangePassword() {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
+  const { authState } = useContext(AuthContext);
+
+  let navigate = useNavigate();
+
+  const [AuthState, setAuthState] = useState({
+    username: authState.username,
+    id: authState.id,
+    status: true,
+  });
+
+  const id = authState.id;
 
   const changePassword = () => {
     axios
@@ -22,6 +35,8 @@ function ChangePassword() {
       .then((response) => {
         if (response.data.error) {
           alert(response.data.error);
+        } else {
+          navigate(`/profile/${id}`);
         }
       });
   };
