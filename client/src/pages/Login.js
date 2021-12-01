@@ -19,6 +19,7 @@ function Login() {
         localStorage.setItem("accessToken", response.data.token);
         console.log(response.data.token);
         localStorage.setItem("username", response.data.username);
+        localStorage.setItem("userId", response.data.id);
         setAuthState({
           username: response.data.username,
           id: response.data.id,

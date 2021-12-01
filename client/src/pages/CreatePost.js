@@ -37,6 +37,7 @@ function CreatePost() {
             postText: postText,
             image: fileName,
             username: localStorage.getItem("username"),
+            UserId: localStorage.getItem("userId"),
           })
 
           .then((response) => {
@@ -47,10 +48,11 @@ function CreatePost() {
   };
 
   return (
-    <div className="Upload">
-      <h1>Create A Post</h1>
-      <div className="UploadForm">
+    <div className="createPostPage">
+      <div className="formContainer">
+        <h1>Create A Post</h1>
         <input
+          id="inputCreatePost"
           type="text"
           placeholder="Title..."
           onChange={(event) => {
@@ -58,6 +60,7 @@ function CreatePost() {
           }}
         />
         <input
+          id="inputCreatePost"
           type="text"
           placeholder="Description..."
           onChange={(event) => {
