@@ -8,7 +8,7 @@ import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
 import Profile from "./pages/Profile";
 import ChangePassword from "./pages/ChangePassword";
-import ConfirmDeleteUser from "./pages/ConfirmDeleteUser";
+
 import { AuthContext } from "./helpers/AuthContext";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -91,11 +91,13 @@ function App() {
                   {authState.username}
                 </Link>
               </h1>
-              {authState.status && (
-                <Link to="/registration">
-                  <button onClick={logout}> Déconnexion</button>
-                </Link>
-              )}
+              <div className="logout_test">
+                {authState.status && (
+                  <Link to="/registration">
+                    <button onClick={logout}>Déconnexion</button>
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
 
@@ -107,11 +109,7 @@ function App() {
             <Route path="/login" exact element={<Login />} />
             <Route path="/profile/:id" exact element={<Profile />} />
             <Route path="/changepassword" exact element={<ChangePassword />} />
-            <Route
-              path="/confirmDeleteUser"
-              exact
-              element={<ConfirmDeleteUser />}
-            />
+
             <Route path="*" exact element={<PageNotFound />} />
           </Routes>
         </Router>

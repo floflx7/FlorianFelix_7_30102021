@@ -6,12 +6,13 @@ import { AuthContext } from "../helpers/AuthContext";
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const { setAuthState } = useContext(AuthContext);
 
   let Navigate = useNavigate();
 
   const login = () => {
-    const data = { username: username, password: password };
+    const data = { username: username, password: password, email: email };
     axios.post("http://localhost:3001/auth/login", data).then((response) => {
       if (response.data.error) {
         alert(response.data.error);
@@ -43,6 +44,12 @@ function Login() {
         type="password"
         onChange={(event) => {
           setPassword(event.target.value);
+        }}
+      />
+      <label>Email:</label>
+      <input
+        onChange={(event) => {
+          setEmail(event.target.value);
         }}
       />
 

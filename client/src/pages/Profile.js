@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../helpers/AuthContext";
@@ -10,7 +10,7 @@ function Profile() {
   const [username, setUsername] = useState("");
   const [listOfPosts, setListOfPosts] = useState([]);
   const { authState } = useContext(AuthContext);
-
+  const ref = React.createRef();
   const [AuthState, setAuthState] = useState({
     username: authState.username,
     id: authState.id,
@@ -39,6 +39,8 @@ function Profile() {
   };
 
   const logout = () => {
+    React.createRef();
+
     localStorage.removeItem("accessToken");
     setAuthState(false);
   };
@@ -60,8 +62,15 @@ function Profile() {
         )}
         <button
           onClick={() => {
-            navigate("/confirmDeleteUser");
-            console.log(authState.id);
+            let confirm = window.confirm("delete your Account ?");
+            if (confirm) {
+              deleteUser(authState.id);
+              deleteUser(logout);
+              navigate("/registration");
+              console.log(authState.id);
+            } else {
+              console.log("WTF");
+            }
           }}
         >
           X

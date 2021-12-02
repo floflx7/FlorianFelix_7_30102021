@@ -10,11 +10,13 @@ function Registration() {
   const initialValues = {
     username: "",
     password: "",
+    email: "",
   };
 
   const validationSchema = Yup.object().shape({
     username: Yup.string().min(3).max(15).required(),
     password: Yup.string().min(4).max(20).required(),
+    email: Yup.string().min(4).max(20).required(),
   });
 
   const onSubmit = (data) => {
@@ -44,6 +46,15 @@ function Registration() {
             type="password"
             id="inputCreatePost"
             name="password"
+          />
+
+          <label>Email: </label>
+          <ErrorMessage name="password" component="span" />
+          <Field
+            type="mail"
+            autoComplete="off"
+            id="inputCreatePost"
+            name="email"
           />
 
           <button type="submit"> Register</button>
