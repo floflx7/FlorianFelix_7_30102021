@@ -20,12 +20,6 @@ function Registration() {
     password: Yup.string().min(4).max(20).required(),
   });
 
-  useEffect(() => {
-    axios.get("http://localhost:3001/auth/").then((response) => {
-      console.log(response);
-    });
-  }, []);
-
   const onSubmit = (data) => {
     if (regexMail.test(data.email) == true) {
       axios.post("http://localhost:3001/auth", data).then((response) => {

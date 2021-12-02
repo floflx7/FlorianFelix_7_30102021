@@ -26,7 +26,7 @@
     flex-direction: column;
     margin-top: 50px;
     border: 1px solid lightgray;
-    background-color: rgb(73, 70, 70);
+    background-color: rgba(73, 70, 70, 0.774);
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     transition: all 0.2s ease-out;
   }
@@ -165,6 +165,7 @@
     color: white;
     margin-left: auto;
     margin-right: auto;
+
     transition: ease-out 0.1s all;
   }
 

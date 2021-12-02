@@ -48,8 +48,6 @@ function Profile() {
   return (
     <div className="profilePageContainer">
       <div className="basicInfo">
-        {" "}
-        <h1> {username} </h1>
         {authState.username === username && (
           <button
             onClick={() => {
@@ -57,12 +55,14 @@ function Profile() {
             }}
           >
             {" "}
-            Change My Password
+            Changer mon mot de passe
           </button>
         )}
         <button
           onClick={() => {
-            let confirm = window.confirm("delete your Account ?");
+            let confirm = window.confirm(
+              "Voulez vous supprimer votre compte ?"
+            );
             if (confirm) {
               deleteUser(authState.id);
               deleteUser(logout);
@@ -73,7 +73,7 @@ function Profile() {
             }
           }}
         >
-          X
+          Supprimer mon compte
         </button>
       </div>
       <div className="listOfPosts">

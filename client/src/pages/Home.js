@@ -5,11 +5,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { Image } from "cloudinary-react";
 import { Video } from "cloudinary-react";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
+import dateFormat from "dateformat";
 
 function Home() {
   const [listOfPosts, setListOfPosts] = useState([]);
   const [likedPosts, setLikedPosts] = useState([]);
-
+  dateFormat("2019-04-30T08:59:00.000Z", "dddd, mmmm dS, yyyy");
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -66,7 +67,7 @@ function Home() {
         }
       });
   };
-
+  const today = Date.now();
   return (
     <div>
       {listOfPosts.map((value, key) => {
@@ -90,7 +91,7 @@ function Home() {
             <div className="footer">
               <div className="left_side_footer">
                 {value.username}
-                <div className="date"> Le: {value.createdAt}</div>
+                <div className="date"> {dateFormat(value.createdAt)} </div>
               </div>
               <div className="buttons">
                 <ThumbUpAltIcon

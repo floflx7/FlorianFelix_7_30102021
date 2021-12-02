@@ -68,7 +68,7 @@ function CreatePost() {
   return (
     <div className="createPostPage">
       <div className="formContainer">
-        <h1>Create A Post</h1>
+        <h1>Créer un post</h1>
         <input
           id="inputCreatePost"
           type="text"

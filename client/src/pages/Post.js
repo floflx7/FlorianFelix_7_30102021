@@ -3,7 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../helpers/AuthContext";
 import { Image } from "cloudinary-react";
-import { Video } from "cloudinary-react";
+
+import dateFormat from "dateformat";
 
 function Post() {
   let { id } = useParams();
@@ -13,6 +14,8 @@ function Post() {
   const { authState } = useContext(AuthContext);
 
   let navigate = useNavigate();
+
+  dateFormat("2019-04-30T08:59:00.000Z", "dddd, mmmm dS, yyyy");
 
   useEffect(() => {
     axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
@@ -137,17 +140,18 @@ function Post() {
             />
           </div>
           <div className="footer">
-            <div className="username_footer">{postObject.username}</div>
+            <div className="left_side_footer">
+              <div className="username_footer">{postObject.username}</div>
+              <div className="date"> {dateFormat(postObject.createdAt)} </div>
+            </div>
             {authState.username === postObject.username && (
               <button
                 className="delete"
                 onClick={() => {
-                  let confirm = window.confirm("delete post ?");
-                  if (confirm) {
-                    deletePost(postObject.id);
-                  } else {
-                    console.log("WTF");
-                  }
+                  let confirm = window.confirm(
+                    "Voulez vous supprimez le post ?"
+                  );
+                  if (confirm) deletePost(postObject.id);
                 }}
               >
                 Delete Post
