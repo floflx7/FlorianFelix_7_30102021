@@ -25,28 +25,44 @@ function CreatePost() {
     formData.append("file", fileSelected);
     formData.append("upload_preset", "titzz75s");
 
-    axios
-      .post("https://api.cloudinary.com/v1_1/dfhqbiyir/upload", formData)
-      .then((response) => {
-        console.log(response.data.public_id);
-        console.log(response);
-        const fileName = response.data.public_id;
+    if (fileSelected) {
+      axios
+        .post("https://api.cloudinary.com/v1_1/dfhqbiyir/upload", formData)
+        .then((response) => {
+          console.log(response.data.public_id);
+          console.log(response);
+          const fileName = response.data.public_id;
 
-        axios
-          .post("http://localhost:3001/posts", {
-            title: title,
-            postText: postText,
-            image: fileName,
-            username: authState.username,
-            UserId: authState.id,
-          })
+          axios
+            .post("http://localhost:3001/posts", {
+              title: title,
+              postText: postText,
+              image: fileName,
+              username: authState.username,
+              UserId: authState.id,
+            })
 
-          .then((response) => {
-            console.log(response);
-            console.log(fileName);
-            navigate("/");
-          });
-      });
+            .then((response) => {
+              console.log(response);
+              console.log(fileName);
+              navigate("/");
+            });
+        });
+    } else {
+      axios
+        .post("http://localhost:3001/posts", {
+          title: title,
+          postText: postText,
+          username: authState.username,
+          UserId: authState.id,
+        })
+
+        .then((response) => {
+          console.log(response);
+
+          navigate("/");
+        });
+    }
   };
 
   return (

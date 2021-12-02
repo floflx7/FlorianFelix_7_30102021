@@ -68,7 +68,8 @@
     flex: 20%;
     display: grid;
     place-content: center;
-    height: 250px;
+    max-height: 250px;
+    min-height: none;
     margin-left: auto;
     margin-right: auto;
     padding: 20px;
@@ -85,6 +86,14 @@
     color: white;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+  }
+
+  .footer .date {
+    font-size: 10px;
+  }
+  .footer .left_side_footer {
+    display: flex;
+    flex-direction: column;
   }
 
   .footer .username_footer {

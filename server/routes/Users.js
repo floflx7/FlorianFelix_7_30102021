@@ -7,13 +7,17 @@ const { sign } = require("jsonwebtoken");
 
 router.post("/", async (req, res) => {
   const { username, password, email } = req.body;
+
   bcrypt.hash(password, 10).then((hash) => {
     Users.create({
       username: username,
       password: hash,
       email: email,
     });
-    res.json("SUCCESS");
+    (err, results) => {
+      console.log(err);
+      res.send(results);
+    };
   });
 });
 
@@ -35,7 +39,8 @@ router.post("/login", async (req, res) => {
   });
 });
 
-router.get("/auth", validateToken, (req, res) => {
+router.get("/auth", (req, res) => {
+  console.log("test");
   res.json(req.user);
 });
 

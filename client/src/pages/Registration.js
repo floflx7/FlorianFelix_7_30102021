@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -13,17 +13,28 @@ function Registration() {
     email: "",
   };
 
+  const regexMail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/;
+
   const validationSchema = Yup.object().shape({
     username: Yup.string().min(3).max(15).required(),
     password: Yup.string().min(4).max(20).required(),
-    email: Yup.string().min(4).max(20).required(),
   });
 
-  const onSubmit = (data) => {
-    axios.post("http://localhost:3001/auth", data).then(() => {
-      console.log(data);
-      navigate("/");
+  useEffect(() => {
+    axios.get("http://localhost:3001/auth/").then((response) => {
+      console.log(response);
     });
+  }, []);
+
+  const onSubmit = (data) => {
+    if (regexMail.test(data.email) == true) {
+      axios.post("http://localhost:3001/auth", data).then((response) => {
+        console.log(response);
+        navigate("/login");
+      });
+    } else {
+      console.log("email non valide");
+    }
   };
 
   return (
@@ -49,7 +60,7 @@ function Registration() {
           />
 
           <label>Email: </label>
-          <ErrorMessage name="password" component="span" />
+          <ErrorMessage name="email" component="span" />
           <Field
             type="mail"
             autoComplete="off"

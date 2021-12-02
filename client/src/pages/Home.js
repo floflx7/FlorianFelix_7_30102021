@@ -88,7 +88,10 @@ function Home() {
               <div className="text">{value.postText}</div>
             </div>
             <div className="footer">
-              {value.username}
+              <div className="left_side_footer">
+                {value.username}
+                <div className="date"> Le: {value.createdAt}</div>
+              </div>
               <div className="buttons">
                 <ThumbUpAltIcon
                   onClick={() => {
