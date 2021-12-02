@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../helpers/AuthContext";
 import { Image } from "cloudinary-react";
-
+import CancelIcon from "@material-ui/icons/Cancel";
 import dateFormat from "dateformat";
 
 function Post() {
@@ -178,16 +178,21 @@ function Post() {
             return (
               <div key={key} className="comment">
                 <label>
-                  <h3>{comment.username} : </h3> {comment.commentBody}
+                  <h3>
+                    <div className="date">{dateFormat(comment.createdAt)}</div>
+                    {comment.username} :
+                  </h3>
+
+                  {comment.commentBody}
                 </label>
+
                 {authState.username === comment.username && (
-                  <button
+                  <CancelIcon
+                    className="button"
                     onClick={() => {
                       deleteComment(comment.id);
                     }}
-                  >
-                    X
-                  </button>
+                  ></CancelIcon>
                 )}
               </div>
             );
