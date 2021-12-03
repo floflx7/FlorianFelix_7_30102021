@@ -8,6 +8,10 @@ const { sign } = require("jsonwebtoken");
 router.post("/", async (req, res) => {
   const { username, password, email } = req.body;
 
+  const user = await Users.findOne({ where: { email: email } });
+
+  if (user) window.alert({ error: "email déjà utilisé." });
+
   bcrypt.hash(password, 10).then((hash) => {
     Users.create({
       username: username,

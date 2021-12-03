@@ -25,9 +25,21 @@ function CreatePost() {
     formData.append("file", fileSelected);
     formData.append("upload_preset", "titzz75s");
 
+    const options = {
+      onUploadProgress: (progressEvent) => {
+        const { loaded, total } = progressEvent;
+        let percent = Math.floor((loaded * 100) / total);
+        console.log(`${loaded}kb of ${total}kb | ${percent}%`);
+      },
+    };
+
     if (fileSelected) {
       axios
-        .post("https://api.cloudinary.com/v1_1/dfhqbiyir/upload", formData)
+        .post(
+          "https://api.cloudinary.com/v1_1/dfhqbiyir/upload",
+          formData,
+          options
+        )
         .then((response) => {
           console.log(response.data.public_id);
           console.log(response);

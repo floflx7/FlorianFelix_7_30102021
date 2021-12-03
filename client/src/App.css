@@ -518,6 +518,7 @@
     border: 1px solid lightgray;
     background-color: rgba(73, 70, 70, 0.774);
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    text-shadow: rgba(15, 15, 15, 0.767) 0px 2px 8px 0px;
   }
 
   .post:hover {
@@ -693,6 +694,7 @@
     justify-content: flex-end;
     align-items: center;
     padding: 10px;
+    z-index: 1;
   }
 
   .navbar .loggedInContainer button {
@@ -830,7 +832,7 @@
   }
 
   .listOfComments .comment {
-    width: 20%;
+    width: 200px;
     height: auto;
     padding: 10px;
     border: 1px solid lightgray;
