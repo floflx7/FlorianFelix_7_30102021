@@ -45,7 +45,6 @@ router.post("/login", async (req, res) => {
 
 router.get("/auth", (req, res) => {
   console.log("test");
-  console.log(req.user);
   res.json(req.user);
 });
 

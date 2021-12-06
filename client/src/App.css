@@ -1,4 +1,4 @@
-@media only screen and (max-width: 2000px) and (min-width: 600px) {
+@media only screen and (min-width: 600px) {
   .App {
     width: 100%;
     height: auto;
@@ -17,7 +17,7 @@
   .post {
     max-width: 400px;
     min-width: none;
-
+    width: 300px;
     max-height: 500px;
     min-height: 300px;
 
@@ -204,6 +204,11 @@
     flex-direction: row;
     align-items: center;
   }
+
+  .logo_navbar {
+    width: 100px;
+  }
+
   .navbar .links {
     flex: 50%;
     height: 100%;
