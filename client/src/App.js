@@ -15,11 +15,15 @@ import logo_1 from "./images/icon-left-font-monochrome-white.png";
 import logo_2 from "./images/logo_blanc.png";
 
 function App() {
-  const [authState, setAuthState] = useState({
-    username: "",
-    id: 0,
-    status: false,
-  });
+  let [authState, setAuthState] = useState(
+    {
+      username: "",
+      id: 0,
+      status: false,
+    },
+    console.log("wtf"),
+    console.log("authState")
+  );
 
   const logout = () => {
     localStorage.removeItem("accessToken");
@@ -35,17 +39,22 @@ function App() {
       })
       .then((response) => {
         if (response.data.error) {
-          setAuthState({
-            username: "",
-            id: 0,
-            status: false,
-          });
+          setAuthState(
+            {
+              username: "",
+              id: 0,
+              status: false,
+            },
+            console.log(response.data.error)
+          );
         } else {
           setAuthState({
             username: response.data.username,
             id: response.data.id,
             status: true,
           });
+          console.log(authState.status);
+          console.log(response.data.username);
         }
       });
   }, []);
@@ -90,7 +99,7 @@ function App() {
                 </Link>
               </h1>
               <div className="logout_test">
-                {authState.status && (
+                {authState.status === true && (
                   <Link to="/registration">
                     <button onClick={logout}>Déconnexion</button>
                   </Link>

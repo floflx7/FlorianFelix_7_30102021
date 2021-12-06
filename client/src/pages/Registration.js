@@ -45,10 +45,13 @@ function Registration() {
         <Form className="loginContainer">
           <h1>Register</h1>
           <label>Username: </label>
+          <div className="sous_text">Entre 3 et 15 caractères</div>
           <ErrorMessage name="username" component="span" />
           <Field autoComplete="off" id="inputCreatePost" name="username" />
-
           <label>Password: </label>
+          <div className="sous_text">
+            1 Majuscule, 1 Chiffre et 8 caractères minimum
+          </div>
           <ErrorMessage name="password" component="span" />
           <Field
             autoComplete="off"
@@ -56,17 +59,15 @@ function Registration() {
             id="inputCreatePost"
             name="password"
           />
-
           <label>Email: </label>
+          <div className="sous_text">exemple@exemple.com</div>
           <ErrorMessage name="email" component="span" />
           <Field
             type="mail"
             autoComplete="off"
             id="inputCreatePost"
             name="email"
-            placeholder="exemple@exemple.com"
           />
-
           <button type="submit"> Register</button>
         </Form>
       </Formik>

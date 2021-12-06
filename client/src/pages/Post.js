@@ -132,12 +132,12 @@ function Post() {
               }
             }}
           >
-            {postObject.postText}
             <Image
               className="PostImage"
               cloudName="dfhqbiyir"
               publicId={postObject.image}
             />
+            {postObject.postText}
           </div>
           <div className="footer">
             <div className="left_side_footer">
