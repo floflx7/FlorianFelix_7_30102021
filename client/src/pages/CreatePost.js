@@ -41,8 +41,6 @@ function CreatePost() {
           options
         )
         .then((response) => {
-          console.log(response.data.public_id);
-          console.log(response);
           const fileName = response.data.public_id;
 
           axios
@@ -54,9 +52,7 @@ function CreatePost() {
               UserId: authState.id,
             })
 
-            .then((response) => {
-              console.log(response);
-              console.log(fileName);
+            .then(() => {
               navigate("/");
             });
         });
@@ -69,9 +65,7 @@ function CreatePost() {
           UserId: authState.id,
         })
 
-        .then((response) => {
-          console.log(response);
-
+        .then(() => {
           navigate("/");
         });
     }
@@ -84,7 +78,7 @@ function CreatePost() {
         <input
           id="inputCreatePost"
           type="text"
-          placeholder="Title..."
+          placeholder="Titre"
           onChange={(event) => {
             setTitle(event.target.value);
           }}
@@ -92,7 +86,7 @@ function CreatePost() {
         <input
           id="inputCreatePost"
           type="text"
-          placeholder="Description..."
+          placeholder="Texte"
           onChange={(event) => {
             setPostText(event.target.value);
           }}

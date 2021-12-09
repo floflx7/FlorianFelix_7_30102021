@@ -164,8 +164,10 @@ function Post() {
         <div className="addCommentContainer">
           <input
             type="text"
-            placeholder="Comment..."
+            placeholder="100 caractères maximum..."
             autoComplete="off"
+            minlength="5"
+            maxlength="50"
             value={newComment}
             onChange={(event) => {
               setNewComment(event.target.value);

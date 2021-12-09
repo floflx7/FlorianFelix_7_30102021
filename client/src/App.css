@@ -267,16 +267,14 @@
     margin-left: 20px;
     text-decoration: none;
     color: white;
-    animation: ease-in 0.2s opacity;
+
     transition: ease-out 0.2s all;
   }
 
   .navbar a:hover {
     text-decoration: none;
-
-    animation: ease-in 0.5s opacity;
-
-    letter-spacing: 2px;
+    animation: ease-out 0.2s grow;
+    transform: scale(1.02);
   }
 
   .navbar button {
@@ -372,7 +370,7 @@
   }
 
   .listOfComments .comment {
-    width: 30%;
+    width: 50%;
     height: auto;
     padding: 10px;
     border: 1px solid lightgray;
@@ -381,6 +379,11 @@
     display: flex;
     overflow-x: scroll;
     flex-direction: column;
+  }
+
+  label {
+    max-width: 30ch;
+    word-wrap: break-word;
   }
 
   .listOfComments .comment h3 {
@@ -402,6 +405,7 @@
     color: white;
     flex: 20%;
     text-align: center;
+    flex: 20%;
   }
 
   .listOfComments .comment .delete {
@@ -515,9 +519,8 @@
   }
 
   .post {
-    max-width: 400px;
-    min-width: none;
-
+    max-width: 300px;
+    min-width: 100px;
     max-height: 500px;
     min-height: 300px;
     color: white;
@@ -529,6 +532,11 @@
     background-color: rgba(73, 70, 70, 0.774);
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     text-shadow: rgba(15, 15, 15, 0.767) 0px 2px 8px 0px;
+  }
+
+  .listOfPosts .post {
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .post:hover {
@@ -632,6 +640,7 @@
     padding: 20px;
     border: 5px solid rgb(26, 68, 109);
     border-radius: 5px;
+    margin-top: 50px;
   }
 
   .formContainer #inputCreatePost {
@@ -824,6 +833,11 @@
     border: none;
   }
 
+  label {
+    max-width: 20ch;
+    word-wrap: break-word;
+  }
+
   .addCommentContainer button {
     background-color: rgb(26, 68, 109);
     color: white;
@@ -842,13 +856,18 @@
   }
 
   .listOfComments .comment {
-    width: 200px;
     height: auto;
     padding: 10px;
     border: 1px solid lightgray;
     border-radius: 5px;
     margin-top: 20px;
     display: flex;
+    overflow-x: scroll;
+    text-overflow: ellipsis;
+  }
+
+  .listOfComments .comment p {
+    max-width: 30ch;
   }
 
   .listOfComments .comment h3 {
@@ -939,7 +958,8 @@
 
   .basicInfo {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    margin-top: 100px;
   }
 
   .basicInfo h1 {
@@ -952,6 +972,9 @@
     float: right;
     flex: 50%;
     transition: ease-out 0.1s all;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .basicInfo button:hover {

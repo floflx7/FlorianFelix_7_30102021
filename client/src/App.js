@@ -9,25 +9,20 @@ import PageNotFound from "./pages/PageNotFound";
 import Profile from "./pages/Profile";
 import ChangePassword from "./pages/ChangePassword";
 import { AuthContext } from "./helpers/AuthContext";
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 import logo_1 from "./images/icon-left-font-monochrome-white.png";
 import logo_2 from "./images/logo_blanc.png";
 
 function App() {
-  let [authState, setAuthState] = useState(
-    {
-      username: "",
-      id: 0,
-      status: false,
-    },
-    console.log("wtf"),
-    console.log("authState")
-  );
+  let [authState, setAuthState] = useState({});
+
+  if (authState === true) setAuthState = true;
 
   const logout = () => {
     localStorage.removeItem("accessToken");
-    setAuthState(false);
+    setAuthState({ username: "", id: 0, status: false });
   };
 
   useEffect(() => {
@@ -39,22 +34,12 @@ function App() {
       })
       .then((response) => {
         if (response.data.error) {
-          setAuthState(
-            {
-              username: "",
-              id: 0,
-              status: false,
-            },
-            console.log(response.data.error)
-          );
         } else {
           setAuthState({
             username: response.data.username,
             id: response.data.id,
             status: true,
           });
-          console.log(authState.status);
-          console.log(response.data.username);
         }
       });
   }, []);
@@ -68,7 +53,7 @@ function App() {
               {!authState.status ? (
                 <>
                   <Link to="/login"> Se connecter </Link>
-                  <Link to="/registration"> Créer un compte</Link>
+                  <Link to="/registration"> Créer un compte </Link>
                 </>
               ) : (
                 <>
