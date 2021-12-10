@@ -18,7 +18,7 @@ import logo_2 from "./images/logo_blanc.png";
 function App() {
   let [authState, setAuthState] = useState({});
 
-  if (authState === true) setAuthState = true;
+  
 
   const logout = () => {
     localStorage.removeItem("accessToken");
