@@ -58,6 +58,7 @@ body {
   display: grid;
   place-content: center;
   padding: 20px;
+  text-shadow: black 0px 2px 5px;
 }
 
 .post .body .PostImage {
@@ -375,7 +376,6 @@ button {
   border-radius: 5px;
   margin-top: 20px;
   display: flex;
-  overflow-x: scroll;
   flex-direction: column;
 }
 
@@ -409,14 +409,6 @@ label {
 .listOfComments .comment .delete {
   margin: 0px;
   float: right;
-}
-
-#individual {
-}
-
-#individual .title,
-#individual .footer {
-  font-size: 30px;
 }
 
 /* LOGIN */
@@ -457,11 +449,13 @@ button {
 .footer_page {
   position: relative;
   padding: 20px;
-  background-color: rgb(26, 68, 109);
-  color: white;
-  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  color: rgb(0, 0, 0);
+  width: fit-content;
   bottom: 0;
   margin-top: 50px;
+  overflow-x: hidden;
 }
 
 .text_footer_page {
@@ -496,6 +490,20 @@ button {
 
 .basicInfo button:active {
   box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.185);
+}
+
+.footer_page {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 15px;
+}
+
+.footer_page img {
+  margin-right: 10px;
+  width: 30px;
 }
 
 @media only screen and (max-width: 800px) {

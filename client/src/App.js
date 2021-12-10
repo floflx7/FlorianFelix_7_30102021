@@ -14,11 +14,19 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import logo_1 from "./images/icon-left-font-monochrome-white.png";
 import logo_2 from "./images/logo_blanc.png";
+import logo_noir from "./images/logo_noir.png";
+
+const ColoredLine = ({ color }) => (
+  <hr
+    style={{
+      color: "black",
+      width: 100,
+    }}
+  />
+);
 
 function App() {
   let [authState, setAuthState] = useState({});
-
-  
 
   const logout = () => {
     localStorage.removeItem("accessToken");
@@ -106,6 +114,12 @@ function App() {
           </Routes>
         </Router>
       </AuthContext.Provider>
+
+      <div className="footer_page">
+        <img className="logo_2" src={logo_noir} alt="Logo" />
+
+        <p>2021 Groumpomania, Inc.</p>
+      </div>
     </div>
   );
 }
