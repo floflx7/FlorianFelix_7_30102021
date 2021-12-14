@@ -10,9 +10,7 @@ router.post("/", async (req, res) => {
 
   const user = await Users.findOne({ where: { email: email } });
 
-  if (user.email === email) {
-    res.json({ error: "Wrong Password Entered!" });
-  } else {
+  if (user === null) {
     bcrypt.hash(password, 10).then((hash) => {
       Users.create({
         username: username,
@@ -24,6 +22,10 @@ router.post("/", async (req, res) => {
         res.send(results);
       };
     });
+  } else if (user.email === email) {
+    res.json({ error: "Email déjà utilisé" });
+  } else {
+    res.json({ error: "WTF" });
   }
 });
 

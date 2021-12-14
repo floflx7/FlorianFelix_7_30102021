@@ -19,7 +19,7 @@ function Registration() {
     if (
       (regexMail.test(data.email) == true) &
       (regexPassword.test(data.password) == true)
-    ) {
+    )
       axios
         .post("http://localhost:3001/auth", {
           username: data.username,
@@ -27,12 +27,13 @@ function Registration() {
           email: data.email,
         })
         .then((response) => {
-          alert(response);
-          navigate("/login");
+          if (response.data.error) {
+            alert(response.data.error);
+          } else {
+            console.log("test");
+          }
         });
-    } else {
-      alert("Champ(s) non valide");
-    }
+    navigate("/login");
   };
 
   return (
