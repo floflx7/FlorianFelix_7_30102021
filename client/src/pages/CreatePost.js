@@ -96,7 +96,9 @@ function CreatePost() {
           type="file"
           onChange={(e) => setFileSelected(e.target.files[0])}
         />
-        <button onClick={upload}>Upload</button>
+        <button className="upload" onClick={upload}>
+          Upload
+        </button>
       </div>
     </div>
   );
