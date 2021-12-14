@@ -17,14 +17,11 @@ import logo_2 from "./images/logo_blanc.png";
 import logo_noir from "./images/logo_noir.png";
 
 function App() {
-  let [authState, setAuthState] = useState(
-    {
-      username: "",
-      id: 0,
-      status: false,
-    },
-    console.log("sd")
-  );
+  let [authState, setAuthState] = useState({
+    username: "",
+    id: 0,
+    status: false,
+  });
 
   const logout = () => {
     localStorage.removeItem("accessToken");
@@ -40,6 +37,7 @@ function App() {
       })
       .then((response) => {
         if (response.data.error) {
+          setAuthState({ ...authState, status: false });
         } else {
           setAuthState({
             username: response.data.username,
@@ -47,8 +45,6 @@ function App() {
             status: true,
           });
         }
-        console.log(authState.status);
-        console.log("test");
       });
   }, []);
 

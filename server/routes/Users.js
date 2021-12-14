@@ -10,19 +10,21 @@ router.post("/", async (req, res) => {
 
   const user = await Users.findOne({ where: { email: email } });
 
-  if (user) window.alert({ error: "email déjà utilisé." });
-
-  bcrypt.hash(password, 10).then((hash) => {
-    Users.create({
-      username: username,
-      password: hash,
-      email: email,
+  if (user.email === email) {
+    res.json({ error: "Wrong Password Entered!" });
+  } else {
+    bcrypt.hash(password, 10).then((hash) => {
+      Users.create({
+        username: username,
+        password: hash,
+        email: email,
+      });
+      (err, results) => {
+        console.log(err);
+        res.send(results);
+      };
     });
-    (err, results) => {
-      console.log(err);
-      res.send(results);
-    };
-  });
+  }
 });
 
 router.post("/login", async (req, res) => {
@@ -43,8 +45,7 @@ router.post("/login", async (req, res) => {
   });
 });
 
-router.get("/auth", (req, res) => {
-  console.log("test");
+router.get("/auth", validateToken, (req, res) => {
   res.json(req.user);
 });
 

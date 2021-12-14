@@ -91,7 +91,7 @@ function Post() {
               cloudName="dfhqbiyir"
               publicId={postObject.image}
             />
-            {postObject.postText}
+            <div className="text">{postObject.postText}</div>
           </div>
           <div className="footer">
             <div className="left_side_footer">
