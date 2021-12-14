@@ -479,7 +479,6 @@ button {
 .basicInfo {
   display: flex;
   flex-direction: row;
-  height: 80vh;
 }
 
 .basicInfo h1 {
