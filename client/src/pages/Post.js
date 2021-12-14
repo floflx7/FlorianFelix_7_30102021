@@ -80,58 +80,12 @@ function Post() {
       });
   };
 
-  const editPost = (option) => {
-    if (option === "title") {
-      let newTitle = prompt("Enter new title:");
-      axios.put(
-        "http://localhost:3001/posts/title",
-        {
-          newTitle: newTitle,
-          id: id,
-        },
-        {
-          headers: { accessToken: localStorage.getItem("accessToken") },
-        }
-      );
-    } else {
-      let newPostText = prompt("Enter new text");
-      axios.put(
-        "http://localhost:3001/posts/postText",
-        {
-          newText: newPostText,
-          id: id,
-        },
-        {
-          headers: { accessToken: localStorage.getItem("accessToken") },
-        }
-      );
-
-      setPostObject({ ...postObject, postText: newPostText });
-    }
-  };
-
   return (
     <div className="postPage">
       <div className="leftSide">
         <div className="post" id="individual">
-          <div
-            className="title"
-            onClick={() => {
-              if (authState.username === postObject.username) {
-                editPost("title");
-              }
-            }}
-          >
-            {postObject.title}
-          </div>
-          <div
-            className="body"
-            onClick={() => {
-              if (authState.username === postObject.username) {
-                editPost("body");
-              }
-            }}
-          >
+          <div className="title">{postObject.title}</div>
+          <div className="body">
             <Image
               className="PostImage"
               cloudName="dfhqbiyir"
@@ -167,7 +121,7 @@ function Post() {
             placeholder="100 caractères maximum..."
             autoComplete="off"
             minlength="5"
-            maxlength="50"
+            maxlength="100"
             value={newComment}
             onChange={(event) => {
               setNewComment(event.target.value);

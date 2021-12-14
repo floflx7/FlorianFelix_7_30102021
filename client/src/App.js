@@ -16,17 +16,15 @@ import logo_1 from "./images/icon-left-font-monochrome-white.png";
 import logo_2 from "./images/logo_blanc.png";
 import logo_noir from "./images/logo_noir.png";
 
-const ColoredLine = ({ color }) => (
-  <hr
-    style={{
-      color: "black",
-      width: 100,
-    }}
-  />
-);
-
 function App() {
-  let [authState, setAuthState] = useState({});
+  let [authState, setAuthState] = useState(
+    {
+      username: "",
+      id: 0,
+      status: false,
+    },
+    console.log("sd")
+  );
 
   const logout = () => {
     localStorage.removeItem("accessToken");
@@ -49,6 +47,8 @@ function App() {
             status: true,
           });
         }
+        console.log(authState.status);
+        console.log("test");
       });
   }, []);
 
@@ -118,7 +118,7 @@ function App() {
       <div className="footer_page">
         <img className="logo_2" src={logo_noir} alt="Logo" />
 
-        <p>2021 Groumpomania, Inc.</p>
+        <p>2021 Groupomania, Inc.</p>
       </div>
     </div>
   );

@@ -67,7 +67,7 @@ function Home() {
         }
       });
   };
-  const today = Date.now();
+
   return (
     <div>
       {listOfPosts.map((value, key) => {
