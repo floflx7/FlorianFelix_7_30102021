@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../helpers/AuthContext";
@@ -26,10 +24,10 @@ function CreatePost() {
     formData.append("upload_preset", "titzz75s");
 
     const options = {
-      onUploadProgress: (progressEvent) => {
+      onUploadProgress: (progressEvent, req, res) => {
         const { loaded, total } = progressEvent;
         let percent = Math.floor((loaded * 100) / total);
-        console.log(`${loaded}kb of ${total}kb | ${percent}%`);
+        res.json(`${loaded}kb of ${total}kb | ${percent}%`);
       },
     };
 

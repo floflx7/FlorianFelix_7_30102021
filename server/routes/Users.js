@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
   } else if (user.email === email) {
     res.json({ error: "Email déjà utilisé" });
   } else {
-    res.json({ error: "WTF" });
+    res.json({ error: "error" });
   }
 });
 

@@ -9,7 +9,6 @@ import PageNotFound from "./pages/PageNotFound";
 import Profile from "./pages/Profile";
 import ChangePassword from "./pages/ChangePassword";
 import { AuthContext } from "./helpers/AuthContext";
-
 import { useState, useEffect } from "react";
 import axios from "axios";
 import logo_1 from "./images/icon-left-font-monochrome-white.png";
