@@ -34,7 +34,6 @@ function Profile() {
       })
       .then(() => {
         navigate("/registration");
-        console.log(authState.status);
       });
   };
 
@@ -67,9 +66,7 @@ function Profile() {
               deleteUser(authState.id);
               deleteUser(logout);
               navigate("/registration");
-              console.log(authState.id);
             } else {
-              console.log("WTF");
             }
           }}
         >

@@ -20,7 +20,7 @@ function Post() {
   useEffect(() => {
     axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
       setPostObject(response.data);
-      console.log(response.data);
+      
     });
 
     axios.get(`http://localhost:3001/comments/${id}`).then((response) => {

@@ -17,8 +17,7 @@ router.post("/", async (req, res) => {
         password: hash,
         email: email,
       });
-      (err, results) => {
-        console.log(err);
+      (results) => {
         res.send(results);
       };
     });
@@ -63,8 +62,6 @@ router.get("/basicinfo/:id", async (req, res) => {
 
 router.delete("/delete/:id", validateToken, async (req, res) => {
   const authId = req.params.id;
-  console.log(authId);
-
   Users.destroy({
     where: {
       id: authId,

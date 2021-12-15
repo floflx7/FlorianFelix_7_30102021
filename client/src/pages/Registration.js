@@ -26,11 +26,7 @@ function Registration() {
           email: data.email,
         })
         .then((response) => {
-          if (response.data.error) {
-            alert(response.data.error);
-          } else {
-            console.log("test");
-          }
+          if (response.data.error) alert(response.data.error);
         });
     navigate("/login");
   };
