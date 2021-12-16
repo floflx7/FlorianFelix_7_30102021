@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../helpers/AuthContext";
@@ -10,7 +10,6 @@ function CreatePost() {
   const [title, setTitle] = useState();
   const [postText, setPostText] = useState();
   const { authState } = useContext(AuthContext);
-  let { id } = useParams();
 
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
@@ -23,21 +22,9 @@ function CreatePost() {
     formData.append("file", fileSelected);
     formData.append("upload_preset", "titzz75s");
 
-    const options = {
-      onUploadProgress: (progressEvent, req, res) => {
-        const { loaded, total } = progressEvent;
-        let percent = Math.floor((loaded * 100) / total);
-        res.json(`${loaded}kb of ${total}kb | ${percent}%`);
-      },
-    };
-
     if (fileSelected) {
       axios
-        .post(
-          "https://api.cloudinary.com/v1_1/dfhqbiyir/upload",
-          formData,
-          options
-        )
+        .post("https://api.cloudinary.com/v1_1/dfhqbiyir/upload", formData)
         .then((response) => {
           const fileName = response.data.public_id;
 
