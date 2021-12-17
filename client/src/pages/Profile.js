@@ -10,7 +10,7 @@ function Profile() {
   const [username, setUsername] = useState("");
   const [listOfPosts, setListOfPosts] = useState([]);
   const { authState } = useContext(AuthContext);
-  const ref = React.createRef();
+
   const [AuthState, setAuthState] = useState({
     username: authState.username,
     id: authState.id,
@@ -38,8 +38,6 @@ function Profile() {
   };
 
   const logout = () => {
-    React.createRef();
-
     localStorage.removeItem("accessToken");
     setAuthState(false);
   };
@@ -47,16 +45,6 @@ function Profile() {
   return (
     <div className="profilePageContainer">
       <div className="basicInfo">
-        {authState.username === username && (
-          <button
-            onClick={() => {
-              navigate("/changepassword");
-            }}
-          >
-            {" "}
-            Changer mon mot de passe
-          </button>
-        )}
         <button
           onClick={() => {
             let confirm = window.confirm(
