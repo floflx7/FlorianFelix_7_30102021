@@ -49,21 +49,20 @@ function Profile() {
   return (
     <div className="profilePageContainer">
       <div className="basicInfo">
-        <button
-          onClick={() => {
-            let confirm = window.confirm(
-              "Voulez vous supprimer votre compte ?"
-            );
-            if (confirm) {
-              deleteUser(authState.id);
+        {authState.isAdmin === false && (
+          <button
+            onClick={() => {
+              let confirm = window.confirm(
+                "Voulez vous supprimer votre compte ?"
+              );
+              if (confirm) deleteUser(authState.id);
               deleteUser(logout);
               navigate("/registration");
-            } else {
-            }
-          }}
-        >
-          Supprimer mon compte
-        </button>
+            }}
+          >
+            Supprimer mon compte
+          </button>
+        )}
       </div>
       <div className="listOfPosts">
         {listOfPosts.map((value, key) => {
