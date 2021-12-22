@@ -13,14 +13,19 @@ function Post() {
   const [newComment, setNewComment] = useState("");
   const { authState } = useContext(AuthContext);
 
+  console.log(authState);
+
   let navigate = useNavigate();
 
   dateFormat("2019-04-30T08:59:00.000Z", "dddd, mmmm dS, yyyy");
 
   useEffect(() => {
+    axios.get(`http://localhost:3001/auth/auth`).then((response) => {
+      setPostObject(response.data);
+    });
+
     axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
       setPostObject(response.data);
-      
     });
 
     axios.get(`http://localhost:3001/comments/${id}`).then((response) => {
@@ -111,6 +116,20 @@ function Post() {
                 Delete Post
               </button>
             )}
+
+            {authState.isAdmin === true && (
+              <button
+                className="delete"
+                onClick={() => {
+                  let confirm = window.confirm(
+                    "Voulez vous supprimez le post ?"
+                  );
+                  if (confirm) deletePost(postObject.id);
+                }}
+              >
+                Delete Post
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -143,6 +162,14 @@ function Post() {
                 </label>
 
                 {authState.username === comment.username && (
+                  <CancelIcon
+                    className="button"
+                    onClick={() => {
+                      deleteComment(comment.id);
+                    }}
+                  ></CancelIcon>
+                )}
+                {authState.isAdmin === true && (
                   <CancelIcon
                     className="button"
                     onClick={() => {

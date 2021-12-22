@@ -7,23 +7,29 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [isAdmin, setIsAdmin] = useState("");
   const { setAuthState } = useContext(AuthContext);
 
   let Navigate = useNavigate();
 
   const login = () => {
-    const data = { username: username, password: password, email: email };
+    const data = {
+      username: username,
+      password: password,
+      email: email,
+      isAdmin: isAdmin,
+    };
 
     axios.post("http://localhost:3001/auth/login", data).then((response) => {
       if (response.data.error) {
         alert(response.data.error);
       } else {
         localStorage.setItem("accessToken", response.data.token);
-        
 
         setAuthState({
           username: response.data.username,
           id: response.data.id,
+          isAdmin: response.data.isAdmin,
           status: true,
         });
         Navigate("/");

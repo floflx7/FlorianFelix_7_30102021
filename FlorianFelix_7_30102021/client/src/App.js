@@ -19,12 +19,13 @@ function App() {
   let [authState, setAuthState] = useState({
     username: "",
     id: 0,
+    isAdmin: false,
     status: false,
   });
 
   const logout = () => {
     localStorage.removeItem("accessToken");
-    setAuthState({ username: "", id: 0, status: false });
+    setAuthState({ username: "", id: 0, status: false, isAdmin: false });
   };
 
   useEffect(() => {
@@ -41,6 +42,7 @@ function App() {
           setAuthState({
             username: response.data.username,
             id: response.data.id,
+            isAdmin: response.data.isAdmin,
             status: true,
           });
         }

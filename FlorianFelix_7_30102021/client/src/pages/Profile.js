@@ -25,6 +25,10 @@ function Profile() {
     axios.get(`http://localhost:3001/posts/byuserId/${id}`).then((response) => {
       setListOfPosts(response.data);
     });
+
+    axios.get(`http://localhost:3001/auth`).then((response) => {
+      setListOfPosts(response.data);
+    });
   }, []);
 
   const deleteUser = (id) => {
