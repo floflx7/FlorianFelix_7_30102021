@@ -110,12 +110,6 @@ function App() {
           </Routes>
         </Router>
       </AuthContext.Provider>
-
-      <div className="footer_page">
-        <img className="logo_2" src={logo_noir} alt="Logo" />
-
-        <p>2021 Groupomania, Inc.</p>
-      </div>
     </div>
   );
 }

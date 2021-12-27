@@ -31,13 +31,12 @@ router.post("/", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   const { username, password, isAdmin } = req.body;
-  console.log({ username, password, isAdmin });
 
   const user = await Users.findOne({ where: { username: username } });
 
   if (!user) res.json({ error: "User Doesn't Exist" });
 
-  admin = user.isAdmin;
+  const admin = user.isAdmin;
 
   bcrypt.compare(password, user.password).then(async (match) => {
     if (!match) res.json({ error: "Wrong Username And Password Combination" });
@@ -60,18 +59,8 @@ router.get("/auth", validateToken, (req, res) => {
   res.json(req.user);
 });
 
-router.get("/admin", validateToken, async (req, res) => {
-  const id = req.params.id;
-  const basicInfo = await Users.findByPk(id, {
-    attributes: { exclude: ["password"] },
-  });
-
-  res.json(basicInfo);
-});
-
 router.get("/basicinfo/:id", async (req, res) => {
   const id = req.params.id;
-
   const basicInfo = await Users.findByPk(id, {
     attributes: { exclude: ["password"] },
   });

@@ -103,19 +103,20 @@ function Post() {
               <div className="username_footer">{postObject.username}</div>
               <div className="date"> {dateFormat(postObject.createdAt)} </div>
             </div>
-            {authState.username === postObject.username && (
-              <button
-                className="delete"
-                onClick={() => {
-                  let confirm = window.confirm(
-                    "Voulez vous supprimez le post ?"
-                  );
-                  if (confirm) deletePost(postObject.id);
-                }}
-              >
-                Delete Post
-              </button>
-            )}
+            {authState.username === postObject.username &&
+              authState.isAdmin !== true && (
+                <button
+                  className="delete"
+                  onClick={() => {
+                    let confirm = window.confirm(
+                      "Voulez vous supprimez le post ?"
+                    );
+                    if (confirm) deletePost(postObject.id);
+                  }}
+                >
+                  Delete Post
+                </button>
+              )}
 
             {authState.isAdmin === true && (
               <button
@@ -161,14 +162,15 @@ function Post() {
                   {comment.commentBody}
                 </label>
 
-                {authState.username === comment.username && (
-                  <CancelIcon
-                    className="button"
-                    onClick={() => {
-                      deleteComment(comment.id);
-                    }}
-                  ></CancelIcon>
-                )}
+                {authState.username === comment.username &&
+                  authState.isAdmin !== true && (
+                    <CancelIcon
+                      className="button"
+                      onClick={() => {
+                        deleteComment(comment.id);
+                      }}
+                    ></CancelIcon>
+                  )}
                 {authState.isAdmin === true && (
                   <CancelIcon
                     className="button"
