@@ -20,7 +20,7 @@ function CreatePost() {
   const upload = () => {
     const formData = new FormData();
     formData.append("file", fileSelected);
-    formData.append("upload_preset", "titzz75s");
+    formData.append("upload_preset", process.env.REACT_APP_CLOUDINARY_PRESETS);
 
     if (fileSelected) {
       axios
