@@ -6,8 +6,6 @@ require("dotenv").config();
 app.use(express.json());
 app.use(cors());
 
-const multer = require("multer");
-const upload = multer({ dest: "post/" });
 const db = require("./models");
 
 // Routers

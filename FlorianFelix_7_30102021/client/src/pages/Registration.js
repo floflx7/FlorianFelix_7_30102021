@@ -18,7 +18,7 @@ function Registration() {
     if (
       (regexMail.test(data.email) == true) &
       (regexPassword.test(data.password) == true)
-    )
+    ) {
       axios
         .post("http://localhost:3001/auth", {
           username: data.username,
@@ -28,7 +28,10 @@ function Registration() {
         .then((response) => {
           if (response.data.error) alert(response.data.error);
         });
-    navigate("/login");
+      navigate("/login");
+    } else {
+      alert("Certains champs sont mal remplis");
+    }
   };
 
   return (

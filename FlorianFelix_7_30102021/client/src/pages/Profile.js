@@ -17,6 +17,11 @@ function Profile() {
     status: true,
   });
 
+  const logout = () => {
+    localStorage.removeItem("accessToken");
+    setAuthState({ username: "", id: 0, status: false, isAdmin: false });
+  };
+
   useEffect(() => {
     axios.get(`http://localhost:3001/auth/basicinfo/${id}`).then((response) => {
       setUsername(response.data.username);
@@ -32,14 +37,7 @@ function Profile() {
       .delete(`http://localhost:3001/auth/delete/${id}`, {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
-      .then(() => {
-        navigate("/registration");
-      });
-  };
-
-  const logout = () => {
-    localStorage.removeItem("accessToken");
-    setAuthState(false);
+      .then(logout());
   };
 
   return (
@@ -51,9 +49,12 @@ function Profile() {
               let confirm = window.confirm(
                 "Voulez vous supprimer votre compte ?"
               );
-              if (confirm) deleteUser(authState.id);
-              deleteUser(logout);
-              navigate("/registration");
+              if (confirm) {
+                deleteUser(authState.id);
+                navigate("/registration");
+              } else {
+                navigate(`/profile/${authState.id}`);
+              }
             }}
           >
             Supprimer mon compte

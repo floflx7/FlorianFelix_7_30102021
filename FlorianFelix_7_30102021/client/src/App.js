@@ -89,7 +89,7 @@ function App() {
                 </Link>
               </h1>
               <div className="logout_test">
-                {authState.status === true && (
+                {authState.status !== false && (
                   <Link to="/registration">
                     <button onClick={logout}>Déconnexion</button>
                   </Link>
