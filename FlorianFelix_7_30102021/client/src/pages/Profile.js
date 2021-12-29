@@ -43,7 +43,7 @@ function Profile() {
   return (
     <div className="profilePageContainer">
       <div className="basicInfo">
-        {authState.isAdmin === false && (
+        {authState.isAdmin !== true && (
           <button
             onClick={() => {
               let confirm = window.confirm(
