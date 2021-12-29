@@ -1,10 +1,19 @@
 const express = require("express");
+const rateLimit = require("express-rate-limit");
 const app = express();
 const cors = require("cors");
+
 require("dotenv").config();
 
 app.use(express.json());
 app.use(cors());
+
+//const limiter = rateLimit({
+//  windowMs: 15 * 60 * 1000,
+// max: 2,
+//});
+
+//app.use(limiter);
 
 const db = require("./models");
 

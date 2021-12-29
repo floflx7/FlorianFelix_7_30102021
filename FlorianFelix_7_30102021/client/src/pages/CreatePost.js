@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../helpers/AuthContext";
@@ -9,7 +8,6 @@ function CreatePost() {
   const [title, setTitle] = useState();
   const [postText, setPostText] = useState();
   const { authState } = useContext(AuthContext);
-  let { id } = useParams();
 
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {

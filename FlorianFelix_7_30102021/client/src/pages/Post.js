@@ -9,6 +9,7 @@ import dateFormat from "dateformat";
 function Post() {
   let { id } = useParams();
   const [postObject, setPostObject] = useState({});
+
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
   const { authState } = useContext(AuthContext);
@@ -20,10 +21,6 @@ function Post() {
   dateFormat("2019-04-30T08:59:00.000Z", "dddd, mmmm dS, yyyy");
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/auth/auth`).then((response) => {
-      setPostObject(response.data);
-    });
-
     axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
       setPostObject(response.data);
     });
@@ -140,8 +137,8 @@ function Post() {
             type="text"
             placeholder="100 caractères maximum..."
             autoComplete="off"
-            minlength="5"
-            maxlength="100"
+            minLength="5"
+            maxLength="100"
             value={newComment}
             onChange={(event) => {
               setNewComment(event.target.value);

@@ -42,7 +42,7 @@ router.post("/login", async (req, res) => {
     if (!match) res.json({ error: "Wrong Username And Password Combination" });
 
     const accessToken = sign(
-      { username: user.username, id: user.id },
+      { username: user.username, id: user.id, isAdmin: user.isAdmin },
       "importantsecret"
     );
     res.json({
