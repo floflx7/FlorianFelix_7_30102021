@@ -18,8 +18,8 @@ function Profile() {
   });
 
   const logout = () => {
-    localStorage.removeItem("accessToken");
     setAuthState({ username: "", id: 0, status: false, isAdmin: false });
+    localStorage.removeItem("accessToken");
   };
 
   useEffect(() => {
@@ -37,7 +37,7 @@ function Profile() {
       .delete(`http://localhost:3001/auth/delete/${id}`, {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
-      .then(logout());
+      .then(logout(), navigate("/registration"));
   };
 
   return (
@@ -51,7 +51,6 @@ function Profile() {
               );
               if (confirm) {
                 deleteUser(authState.id);
-                navigate("/registration");
               } else {
                 navigate(`/profile/${authState.id}`);
               }

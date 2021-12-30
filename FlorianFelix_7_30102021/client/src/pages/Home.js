@@ -79,11 +79,7 @@ function Home() {
                 navigate(`/post/${value.id}`);
               }}
             >
-              <Image
-                className="PostImage"
-                cloudName="dfhqbiyir"
-                publicId={value.image}
-              />
+              <img className="PostImage" src={value.image} />
 
               <div className="text">{value.postText}</div>
             </div>

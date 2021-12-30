@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Posts, Likes } = require("../models");
-
+const fs = require("fs");
 const { validateToken } = require("../middlewares/AuthMiddleware");
 
 router.get("/", validateToken, async (req, res) => {
@@ -27,16 +27,31 @@ router.get("/byuserId/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   const post = req.body;
-  await Posts.create(post);
+
+  console.log(req.file);
+
+  await Posts.create({
+    title: req.body.title,
+    postText: req.body.postText,
+    image: `${req.protocol}://${req.get("host")}/images/${req.file.filename}`,
+    username: req.body.username,
+    userId: req.body.userId,
+  });
   res.json(post);
 });
 
 router.delete("/:postId", validateToken, async (req, res) => {
-  const postId = req.params.postId;
-  await Posts.destroy({
-    where: {
-      id: postId,
-    },
+  Posts.findOne({ _id: req.params.id }).then((posts) => {
+    const filename = posts.image.split("/images/")[1];
+    fs.unlink(`images/${filename}`, () => {
+      const postId = req.params.postId;
+      Posts.destroy({
+        filename,
+        where: {
+          id: postId,
+        },
+      });
+    });
   });
 
   res.json("DELETED SUCCESSFULLY");

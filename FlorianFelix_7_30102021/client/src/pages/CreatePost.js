@@ -15,29 +15,28 @@ function CreatePost() {
     }
   }, []);
 
-  const upload = () => {
-    const formData = new FormData();
-    formData.append("file", fileSelected);
-    formData.append("upload_preset", process.env.REACT_APP_CLOUDINARY_PRESETS);
+  const onInputChange = (e) => {
+    console.log(e.target.files);
+    setFileSelected(e.target.files[0]);
+  };
+
+  const upload = (e) => {
+    const data = new FormData();
+
+    data.append("file", fileSelected);
+    data.append("title", title);
+    data.append("postText", postText);
+    data.append("username", authState.username);
+    data.append("userId", authState.userId);
+
+    console.log(data);
 
     if (fileSelected) {
       axios
-        .post(`${process.env.REACT_APP_CLOUDINARY_URI}`, formData)
-        .then((response) => {
-          const fileName = response.data.public_id;
+        .post("http://localhost:3001/posts", data)
 
-          axios
-            .post("http://localhost:3001/posts", {
-              title: title,
-              postText: postText,
-              image: fileName,
-              username: authState.username,
-              UserId: authState.id,
-            })
-
-            .then(() => {
-              navigate("/");
-            });
+        .then(() => {
+          navigate("/");
         });
     } else {
       axios
@@ -75,10 +74,7 @@ function CreatePost() {
           }}
         />
 
-        <input
-          type="file"
-          onChange={(e) => setFileSelected(e.target.files[0])}
-        />
+        <input type="file" onChange={onInputChange} />
         <button className="upload" onClick={upload}>
           Upload
         </button>
