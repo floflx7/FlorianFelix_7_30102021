@@ -88,7 +88,11 @@ function Post() {
         <div className="post" id="individual">
           <div className="title">{postObject.title}</div>
           <div className="body">
-            <img className="PostImage" src={postObject.image} />
+            <Image
+              className="PostImage"
+              cloudName="dfhqbiyir"
+              publicId={postObject.image}
+            />
             <div className="text">{postObject.postText}</div>
           </div>
           <div className="footer">

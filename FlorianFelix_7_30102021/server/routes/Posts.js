@@ -28,6 +28,7 @@ router.get("/byuserId/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   const post = req.body;
 
+  console.log(req.body);
   console.log(req.file);
 
   await Posts.create({
@@ -35,7 +36,7 @@ router.post("/", async (req, res) => {
     postText: req.body.postText,
     image: `${req.protocol}://${req.get("host")}/images/${req.file.filename}`,
     username: req.body.username,
-    userId: req.body.userId,
+    UserId: req.body.userId,
   });
   res.json(post);
 });

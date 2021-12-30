@@ -27,7 +27,7 @@ function CreatePost() {
     data.append("title", title);
     data.append("postText", postText);
     data.append("username", authState.username);
-    data.append("userId", authState.userId);
+    data.append("userId", authState.id);
 
     console.log(data);
 
