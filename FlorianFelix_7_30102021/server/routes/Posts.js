@@ -31,28 +31,32 @@ router.post("/", async (req, res) => {
   console.log(req.body);
   console.log(req.file);
 
-  await Posts.create({
-    title: req.body.title,
-    postText: req.body.postText,
-    image: `${req.protocol}://${req.get("host")}/images/${req.file.filename}`,
-    username: req.body.username,
-    UserId: req.body.userId,
-  });
+  if (req.file) {
+    await Posts.create({
+      title: req.body.title,
+      postText: req.body.postText,
+      image: `${req.protocol}://${req.get("host")}/images/${req.file.filename}`,
+      username: req.body.username,
+      UserId: req.body.userId,
+    });
+  } else {
+    await Posts.create({
+      title: req.body.title,
+      postText: req.body.postText,
+      username: req.body.username,
+      UserId: req.body.userId,
+    });
+  }
+
   res.json(post);
 });
 
 router.delete("/:postId", validateToken, async (req, res) => {
-  Posts.findOne({ _id: req.params.id }).then((posts) => {
-    const filename = posts.image.split("/images/")[1];
-    fs.unlink(`images/${filename}`, () => {
-      const postId = req.params.postId;
-      Posts.destroy({
-        filename,
-        where: {
-          id: postId,
-        },
-      });
-    });
+  const postId = req.params.postId;
+  Posts.destroy({
+    where: {
+      id: postId,
+    },
   });
 
   res.json("DELETED SUCCESSFULLY");

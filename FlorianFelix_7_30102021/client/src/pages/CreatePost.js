@@ -16,7 +16,6 @@ function CreatePost() {
   }, []);
 
   const onInputChange = (e) => {
-    console.log(e.target.files);
     setFileSelected(e.target.files[0]);
   };
 
@@ -29,7 +28,7 @@ function CreatePost() {
     data.append("username", authState.username);
     data.append("userId", authState.id);
 
-    console.log(data);
+    
 
     if (fileSelected) {
       axios

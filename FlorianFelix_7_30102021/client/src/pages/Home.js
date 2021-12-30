@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Image } from "cloudinary-react";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import dateFormat from "dateformat";
 
