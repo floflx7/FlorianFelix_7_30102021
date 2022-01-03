@@ -15,11 +15,11 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "b461a53a388d00",
-    "password": "f4ea1247",
-    "database": "heroku_df90c47002a6edf",
-    "host": "eu-cdbr-west-02.cleardb.net",
-    "dialect": "mysql"
+    "username": "",
+    "password": "",
+    "database": "",
+    "host": "",
+    "dialect": ""
   }
 }
 

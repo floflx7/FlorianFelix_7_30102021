@@ -28,9 +28,6 @@ router.get("/byuserId/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   const post = req.body;
 
-  console.log(req.body);
-  console.log(req.file);
-
   if (req.file) {
     await Posts.create({
       title: req.body.title,

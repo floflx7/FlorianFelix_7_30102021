@@ -1,5 +1,5 @@
 const express = require("express");
-const rateLimit = require("express-rate-limit");
+
 const app = express();
 const cors = require("cors");
 var multer = require("multer");
@@ -8,13 +8,6 @@ require("dotenv").config();
 
 app.use(express.json());
 app.use(cors());
-
-//const limiter = rateLimit({
-//  windowMs: 15 * 60 * 1000,
-// max: 2,
-//});
-
-//app.use(limiter);
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {

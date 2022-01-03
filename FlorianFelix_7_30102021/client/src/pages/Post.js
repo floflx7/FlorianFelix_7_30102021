@@ -14,8 +14,6 @@ function Post() {
   const [newComment, setNewComment] = useState("");
   const { authState } = useContext(AuthContext);
 
-  console.log(authState);
-
   let navigate = useNavigate();
 
   dateFormat("2019-04-30T08:59:00.000Z", "dddd, mmmm dS, yyyy");

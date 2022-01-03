@@ -7,7 +7,7 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [isAdmin, setIsAdmin] = useState("");
+  const [isAdmin] = useState("");
   const { setAuthState } = useContext(AuthContext);
 
   let Navigate = useNavigate();

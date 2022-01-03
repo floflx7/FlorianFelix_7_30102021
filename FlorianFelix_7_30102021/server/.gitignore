@@ -1,4 +1,4 @@
-server/config/config.json
-server/images/
 
+server/images/
+node_modules/ 
 

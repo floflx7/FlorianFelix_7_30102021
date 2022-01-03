@@ -25,6 +25,12 @@ function Registration() {
   const onSubmit = () => {
     const data = { username: username, password: password, email: email };
 
+    const wrongUsername = regexUsername.test(data.username) == false;
+
+    const wrongEmail = regexMail.test(data.email) == false;
+
+    const wrongPassword = regexPassword.test(data.password) == false;
+
     if (
       (regexUsername.test(data.username) == true) &
       (regexMail.test(data.email) == true) &
@@ -40,8 +46,13 @@ function Registration() {
           if (response.data.error) alert(response.data.error);
         });
       navigate("/login");
+    } else if (wrongUsername + wrongEmail + wrongPassword) {
+      alert("tout les champs sont mal remplis");
+    } else if (wrongUsername + wrongEmail) {
+      alert("username et email mal remplis");
+    } else if (wrongPassword) {
+      alert("password");
     } else {
-      alert("Certains champs sont mal remplis");
     }
   };
 
