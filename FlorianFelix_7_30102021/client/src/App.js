@@ -13,7 +13,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import logo_1 from "./images/icon-left-font-monochrome-white.png";
 import logo_2 from "./images/logo_blanc.png";
-import logo_noir from "./images/logo_noir.png";
 
 function App() {
   let [authState, setAuthState] = useState({

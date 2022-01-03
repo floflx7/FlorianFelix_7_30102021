@@ -1,7 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../helpers/AuthContext";
+
 function Registration() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
@@ -9,7 +9,7 @@ function Registration() {
 
   let navigate = useNavigate();
 
-  let [authState, setAuthState] = useState({
+  let [authState] = useState({
     username: "",
     id: 0,
     isAdmin: false,
@@ -18,8 +18,7 @@ function Registration() {
 
   console.log(authState.status);
 
-  if (authState.status === false) navigate("/");
-
+  const regexUsername = /^(?=[a-zA-Z0-9._]{3,15}$)(?!.*[_.]{2})[^_.].*[^_.]$/;
   const regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
   const regexMail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/;
 
@@ -27,6 +26,7 @@ function Registration() {
     const data = { username: username, password: password, email: email };
 
     if (
+      (regexUsername.test(data.username) == true) &
       (regexMail.test(data.email) == true) &
       (regexPassword.test(data.password) == true)
     ) {
