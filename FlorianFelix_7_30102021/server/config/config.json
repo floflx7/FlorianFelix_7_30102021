@@ -1,11 +1,11 @@
 
 {
   "development": {
-    "username": "root",
-    "password": "Lauflo.126",
-    "database": "groupomania",
-    "host": "localhost",
-    "dialect": "mysql"
+    "username": "",
+    "password": "",
+    "database": "",
+    "host": "",
+    "dialect": ""
   },
   "test": {
     "username": "root",
