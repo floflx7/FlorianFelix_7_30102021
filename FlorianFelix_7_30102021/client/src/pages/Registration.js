@@ -9,26 +9,13 @@ function Registration() {
 
   let navigate = useNavigate();
 
-  let [authState] = useState({
-    username: "",
-    id: 0,
-    isAdmin: false,
-    status: false,
-  });
-
-  console.log(authState.status);
-
-  const regexUsername = /^(?=[a-zA-Z0-9._]{3,15}$)(?!.*[_.]{2})[^_.].*[^_.]$/;
-  const regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
-  const regexMail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/;
-
   const onSubmit = () => {
     const data = { username: username, password: password, email: email };
-
+    const regexUsername = /^(?=[a-zA-Z0-9._]{3,15}$)(?!.*[_.]{2})[^_.].*[^_.]$/;
+    const regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+    const regexMail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/;
     const wrongUsername = regexUsername.test(data.username) == false;
-
     const wrongEmail = regexMail.test(data.email) == false;
-
     const wrongPassword = regexPassword.test(data.password) == false;
 
     if (
@@ -46,7 +33,28 @@ function Registration() {
           if (response.data.error) alert(response.data.error);
         });
       navigate("/login");
+    } else if (wrongUsername && wrongPassword && wrongEmail) {
+      {
+        alert("all fields are wrong");
+      }
+    } else if (wrongPassword && wrongEmail) {
+      {
+        alert("wrong password and email");
+      }
+    } else if (wrongUsername) {
+      {
+        alert("wrong username");
+      }
+    } else if (wrongPassword) {
+      {
+        alert("wrong password");
+      }
+    } else if (wrongEmail) {
+      {
+        alert("wrong email");
+      }
     } else {
+      alert("error");
     }
   };
 
