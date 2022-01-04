@@ -35,6 +35,15 @@ Démarrer le serveur
 
   nodemon server
 
+Base de données
+Se connecter au serveur MySql de votre choix: remplir les informations dans server/ config.json
+
+utilisateur:
+Un pseudo (entre 3 et 15 caractères)
+Une adresse mail valide
+Un mot de passe (1 Majuscule, 1 Chiffre et 8 caractères minimum).
+
+
 
 
 Server: NodeJS, ExpressJS, MySql
