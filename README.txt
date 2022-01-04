@@ -11,7 +11,7 @@ L'utilisateur peut voter à sa guise pour les sauces de son choix
 Lancer localement le frontend
 Cloner le projet dans un repertoire
 
-git clone https://github.com/floflx7/FlorianFelix_6_13092021.git
+git clone https://github.com/floflx7/FlorianFelix_7_30102021.git
 
 Aller dans le répertoire frontend
 
