@@ -29,31 +29,35 @@ function Post() {
   }, []);
 
   const addComment = () => {
-    axios
-      .post(
-        "http://localhost:3001/comments",
-        {
-          commentBody: newComment,
-          PostId: id,
-        },
-        {
-          headers: {
-            accessToken: localStorage.getItem("accessToken"),
-          },
-        }
-      )
-      .then((response) => {
-        if (response.data.error) {
-          console.log(response.data.error);
-        } else {
-          const commentToAdd = {
+    if (newComment.length != 0) {
+      axios
+        .post(
+          "http://localhost:3001/comments",
+          {
             commentBody: newComment,
-            username: response.data.username,
-          };
-          setComments([...comments, commentToAdd]);
-          setNewComment("");
-        }
-      });
+            PostId: id,
+          },
+          {
+            headers: {
+              accessToken: localStorage.getItem("accessToken"),
+            },
+          }
+        )
+        .then((response) => {
+          if (response.data.error) {
+            console.log(response.data.error);
+          } else {
+            const commentToAdd = {
+              commentBody: newComment,
+              username: response.data.username,
+            };
+            setComments([...comments, commentToAdd]);
+            setNewComment("");
+          }
+        });
+    } else {
+      alert("le commentaire ne doit pas être vide");
+    }
   };
 
   const deleteComment = (id) => {

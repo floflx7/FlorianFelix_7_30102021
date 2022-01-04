@@ -46,12 +46,6 @@ function Registration() {
           if (response.data.error) alert(response.data.error);
         });
       navigate("/login");
-    } else if (wrongUsername + wrongEmail + wrongPassword) {
-      alert("tout les champs sont mal remplis");
-    } else if (wrongUsername + wrongEmail) {
-      alert("username et email mal remplis");
-    } else if (wrongPassword) {
-      alert("password");
     } else {
     }
   };
