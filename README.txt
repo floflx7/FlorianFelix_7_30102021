@@ -1,5 +1,5 @@
-Piquante
-Une application d'avis gastronomique.
+Groupomania
+Réseau social d'entreprise
 
 Fonctionnalités
 L'utilisateur doit s'inscrire ou s'authentifier pour accéder au site
